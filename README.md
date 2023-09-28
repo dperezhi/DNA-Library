@@ -13,3 +13,10 @@ computation will allow future researchers to tap into and modify (ethically) the
 - Researchers: Synthetic Biologists, Geneticists, etc 
 - Students and undergraduate biology/chemistry clubs
 - Synthetic Biology enthusiasts and hobbyists
+
+### User Stories
+- As a user, I want to be able to add a DNA sequence into a list with all of the sequences. I want to be able to specify
+the name, part, organism it comes from, reference, and author.
+- As a user, I want to be able to see my list, and select a DNA sequence to modify it.
+- As a user, I want to be able to add MoClo and/or Biobrick flanks to my DNA sequences.
+- As a user, I want to be able to change the DNA sequence into a protein sequence.
