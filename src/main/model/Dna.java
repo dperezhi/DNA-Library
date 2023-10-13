@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 // Represents a DNA  having a sequence, name, organism and length
 public class Dna {
-    private String sequence;
-    private String name;
-    private String organism;
-    private int length;
-    private String proteinSequence;
+    private String sequence;            //DNA sequence
+    private String name;                //DNA name
+    private String organism;            //DNA sequence Origin organism
+    private int length;                 //length of DNA sequence
+    private String proteinSequence;     //Protein sequence
 
     /*
-     * REQUIRES: sequence has a non-zero length and only contains A,G,C,T
+     * REQUIRES: sequence is 3 or more characters in length and only contains A,G,C,T
+     * MODIFIES: this
      * EFFECTS: sequence string is set to sequence; name string is set to string
-     *          the length is set to the sequence length. author and organism
-     *          remain null.
+     *          the length is set to the sequence length; Organism is set. The protein sequence is generated and set.
      */
     public Dna(String name, String sequence, String organism) {
         this.sequence = sequence;
@@ -26,8 +26,10 @@ public class Dna {
         this.organism = organism;
     }
 
-
-    public String makeProteinSequence() {
+    /*
+     * EFFECTS: returns protein sequence translated from the DNA sequence.
+     */
+    private String makeProteinSequence() {
         String path = "./src/main/content/amino-acid-codons.csv";
         String line = "";
         ArrayList<String> codons = new ArrayList<>();
@@ -41,12 +43,15 @@ public class Dna {
             }
         } catch (Exception e) {
             e.getMessage();
-            e.toString();
+            e.printStackTrace();
         }
         return determineAminoAcidChain(codons, aminoAcids);
     }
 
-    public String determineAminoAcidChain(ArrayList<String> codons, ArrayList<String> aminoAcids) {
+    /*
+     * EFFECTS: returns Protein sequence based on codon codes.
+     */
+    private String determineAminoAcidChain(ArrayList<String> codons, ArrayList<String> aminoAcids) {
         String polypeptide = "";
         int lowerIndex = 0;
         int higherIndex = 3;
@@ -72,6 +77,9 @@ public class Dna {
         return polypeptide;
     }
 
+    /*
+     * EFFECTS: returns a string with all the field values of the DNA object
+     */
     public String toString() {
         String result = "Sequence='" + sequence + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
         return result + "proteinSequence='" + proteinSequence;
@@ -82,6 +90,10 @@ public class Dna {
         return sequence;
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: set the a new value for sequence
+     */
     public void setSequence(String sequence) {
         this.sequence = sequence;
     }
@@ -90,6 +102,10 @@ public class Dna {
         return name;
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: set the a new value for name
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -98,6 +114,10 @@ public class Dna {
         return organism;
     }
 
+    /*
+     * MODIFIES: this
+     * EFFECTS: set the a new value for organism
+     */
     public void setOrganism(String organism) {
         this.organism = organism;
     }

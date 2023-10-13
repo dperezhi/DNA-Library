@@ -1,33 +1,32 @@
 package ui;
 
 import model.Dna;
-import model.DnaList;
+import model.DnaFolder;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        DnaList list = new DnaList();
-        System.out.println("A DNA list has been created for you!");
+        DnaFolder folder = new DnaFolder();
+        System.out.println("A DNA folder has been created for you!");
         boolean key = true;
         System.out.println("Add a DNA sequence:");
-        addSequence(list);
+        addSequence(folder, in);
         do {
             System.out.println("Do you want to add a another DNA sequence?");
             String answer = in.nextLine();
             if (answer.equalsIgnoreCase("yes")) {
-                addSequence(list);
+                addSequence(folder, in);
             } else {
                 key = false;
             }
         } while (key);
-        mainMenu(list);
+        mainMenu(folder, in);
         in.close();
     }
 
-    public static void addSequence(DnaList list) {
-        Scanner in = new Scanner(System.in);
+    public static void addSequence(DnaFolder folder, Scanner in) {
         System.out.println("What is the title of the sequence? ");
         String name = in.nextLine();
         System.out.println("What are the nucleotides? ");
@@ -35,15 +34,14 @@ public class Main {
         System.out.println("What is the organism of origin? ");
         String organism = in.nextLine();
         Dna dna = new Dna(name, sequence, organism);
-        list.addDna(dna);
+        folder.addDna(dna);
         System.out.println("Protein Translation: " + dna.getProteinSequence());
-        in.close();
     }
 
-    public static void menuDisplay(DnaList list) {
+    public static void menuDisplay(DnaFolder folder) {
         System.out.println("Main Menu");
-        System.out.println("These are the current DNAs in your list: ");
-        showDnaList(list);
+        System.out.println("These are the current DNAs in your folder: ");
+        showDnaFolder(folder);
         System.out.println("Choose one of the following options (1, 2, 3, or 4):");
         System.out.println("(1) Add MoClo flanks to a sequence");
         System.out.println("(2) Add a DNA Sequence");
@@ -51,16 +49,16 @@ public class Main {
         System.out.println("(4) Close");
     }
 
-    public static boolean menuDecision(String answer, DnaList list) {
+    public static boolean menuDecision(String answer, DnaFolder folder, Scanner in) {
         switch (answer) {
             case "1":
-                addMoClo(list);
+                addMoClo(folder, in);
                 break;
             case "2":
-                addSequence(list);
+                addSequence(folder, in);
                 break;
             case "3":
-                modifySequence(list);
+                modifyDnaDetails(folder, in);
                 break;
             case "4":
                 return true;
@@ -70,50 +68,44 @@ public class Main {
         return false;
     }
 
-    public static void mainMenu(DnaList list) {
-        Scanner in = new Scanner(System.in);
+    public static void mainMenu(DnaFolder folder, Scanner in) {
         boolean over = false;
         do {
-            menuDisplay(list);
+            menuDisplay(folder);
             String answer = in.nextLine();
-            over = menuDecision(answer, list);
-            if (!again()) {
+            over = menuDecision(answer, folder, in);
+            if (!again(in)) {
                 over = true;
             }
         } while (!over);
-        in.close();
     }
 
-    public static boolean again() {
-        Scanner in = new Scanner(System.in);
+    public static boolean again(Scanner in) {
         System.out.println("Do you want to continue on the Software?");
         String answer = in.nextLine();
         return answer.equalsIgnoreCase("yes");
     }
 
-    public static void showDnaList(DnaList list) {
-        System.out.println(list.showListNames());
+    public static void showDnaFolder(DnaFolder folder) {
+        System.out.println(folder.getDnaNames());
     }
 
 
-    public static void addMoClo(DnaList list) {
-        Scanner in = new Scanner(System.in);
+    public static void addMoClo(DnaFolder folder, Scanner in) {
         System.out.println("What is the name of the DNA sequence do you want to add MoClo flanks? ");
         String name = in.nextLine();
-        Dna dna = list.findDna(name);
+        Dna dna = folder.findDnaByName(name);
         System.out.println(dna.toString());
-        if (list.addMoClo(name)) {
+        if (folder.addMoClo(name)) {
             System.out.println("Successful!");
             System.out.println("New Sequence");
             System.out.println(dna.toString());
         } else {
             System.out.println("Failure. An Invalid Input was detected!");
         }
-        in.close();
     }
 
-    public static void modifySequence(DnaList list) {
-        Scanner in = new Scanner(System.in);
+    public static void modifyDnaDetails(DnaFolder folder, Scanner in) {
         System.out.println("What is the name of the DNA sequence do you want to modify? ");
         String name = in.nextLine();
         System.out.println("What do you want to modify (Sequence, Name, or Organism)? ");
@@ -121,11 +113,10 @@ public class Main {
         String modified = in.nextLine();
         System.out.println("What is the new content? ");
         String newContent = in.nextLine();
-        if (list.modifyDna(name, modified, newContent)) {
+        if (folder.modifyDnaDetails(name, modified, newContent)) {
             System.out.println("Successful!");
         } else {
             System.out.println("Failure. An Invalid Input was detected!");
         }
-        in.close();
     }
 }
