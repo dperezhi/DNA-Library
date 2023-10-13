@@ -2,6 +2,7 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Represents a DNA  having a sequence, name, organism and length
@@ -41,7 +42,7 @@ public class Dna {
                 codons.add(data[0]);
                 aminoAcids.add(data[1]);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.getMessage();
             e.printStackTrace();
         }
@@ -70,7 +71,11 @@ public class Dna {
                 }
                 index++;
             }
-            polypeptide += aminoAcids.get(index);
+            if (index == 64) {
+                polypeptide += "X";
+            } else {
+                polypeptide += aminoAcids.get(index);
+            }
             lowerIndex += 3;
             higherIndex += 3;
         }
@@ -82,7 +87,7 @@ public class Dna {
      */
     public String toString() {
         String result = "Sequence='" + sequence + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
-        return result + "proteinSequence='" + proteinSequence;
+        return result + "proteinSequence='" + proteinSequence + "'";
     }
 
     //Getters and Setters

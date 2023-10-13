@@ -11,6 +11,7 @@ public class DnaTest {
     private Dna dna2;
     private Dna dna3;
     private Dna dna4;
+    private Dna dna5;
 
     @BeforeEach
     void setUp() {
@@ -18,6 +19,7 @@ public class DnaTest {
         dna2 = new Dna("test2", "TTT", "B.Subtilis");
         dna3 = new Dna("test3", "ATTAGTAT", "E.coli");
         dna4 = new Dna("test4", "GCGAGAGTAA", "E.coli");
+        dna5 = new Dna("test5", "ATGATGXDSATG", "E.coli");
     }
 
     @Test
@@ -37,6 +39,17 @@ public class DnaTest {
         assertEquals("F", dna2.getProteinSequence());
         assertEquals("IS", dna3.getProteinSequence());
         assertEquals("ARV", dna4.getProteinSequence());
+    }
+
+    @Test
+    void testProteinSeqCodonNotFound() {
+        assertEquals("MMXM", dna5.getProteinSequence());
+    }
+
+    @Test
+    void testToString() {
+        String expected = "Sequence='ATGATGATGATG', name='test1', organism='B.Subtilis'proteinSequence='MMMM'";
+        assertEquals(expected, dna1.toString());
     }
 
 }

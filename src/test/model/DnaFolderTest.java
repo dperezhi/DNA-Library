@@ -114,6 +114,13 @@ class DnaFolderTest {
     }
 
     @Test
+    void testModifyDnaInvalid() {
+        folder.addDna(dna1);
+        assertFalse(folder.modifyDnaDetails(dna1.getName(), "5", "test0"));
+        assertEquals("test1", dna1.getName());
+    }
+
+    @Test
     void testModifyDnaOrganism() {
         folder.addDna(dna3);
         assertTrue(folder.modifyDnaDetails(dna3.getName(), "3", "Human"));
