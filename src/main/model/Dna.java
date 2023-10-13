@@ -56,12 +56,7 @@ public class Dna {
         String polypeptide = "";
         int lowerIndex = 0;
         int higherIndex = 3;
-        String translatableSequence = sequence;
-        ;
-        int value;
-        if ((value = length % 3) != 0) {
-            translatableSequence = sequence.substring(0, (length - value));
-        }
+        String translatableSequence = getTranslatableSequence();
         for (int i = 3; i <= length; i += 3) {
             String codon = translatableSequence.substring(lowerIndex, higherIndex);
             int index = 0;
@@ -80,6 +75,15 @@ public class Dna {
             higherIndex += 3;
         }
         return polypeptide;
+    }
+
+    public String getTranslatableSequence() {
+        String translatableSequence = sequence;
+        int value;
+        if ((value = length % 3) != 0) {
+            translatableSequence = sequence.substring(0, (length - value));
+        }
+        return translatableSequence;
     }
 
     /*
