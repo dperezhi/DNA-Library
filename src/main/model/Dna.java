@@ -147,7 +147,9 @@ public class Dna implements Writable {
         return proteinSequence;
     }
 
+
     @Override
+    // EFFECTS: creates a JSON Dna Object, citation -https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

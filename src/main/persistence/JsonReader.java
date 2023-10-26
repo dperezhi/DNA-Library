@@ -40,13 +40,13 @@ public class JsonReader {
     private DnaFolder parseDnaFolder(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         DnaFolder dnaFolder = new DnaFolder(name);
-        addDnas(dnaFolder, jsonObject);
+        addDnaSequences(dnaFolder, jsonObject);
         return dnaFolder;
     }
 
     // MODIFIES: dnaFolder
     // EFFECTS: parses Dnas from JSON object and adds them to the DnaFolder
-    private void addDnas(DnaFolder dnaFolder, JSONObject jsonObject) {
+    private void addDnaSequences(DnaFolder dnaFolder, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("DNA Sequences");
         for (Object json : jsonArray) {
             JSONObject nextThingy = (JSONObject) json;

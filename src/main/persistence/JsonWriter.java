@@ -18,7 +18,7 @@ public class JsonWriter {
     private PrintWriter writer;
     private String path;
 
-    // EFFECTS: constructs Jsonwriter to set up a path to a file
+    // EFFECTS: constructs Json writer to set up a path to a file
     public JsonWriter(String path) {
         this.path = path;
     }

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class DnaLibraryApp {
-    private static final String JSON_STORE = "./data/dnalibrary.json";
+    private static final String JSON_STORE = "./data/dnaLibrary.json";
     private static Scanner in;
     private static DnaFolder dnaFolder;
     private JsonWriter jsonWriter;
