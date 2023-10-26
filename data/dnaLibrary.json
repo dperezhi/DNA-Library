@@ -1,0 +1,15 @@
+{
+    "DNA Sequences": [
+        {
+            "sequence": "atgatgatg",
+            "organism": "e.coli",
+            "name": "lib1"
+        },
+        {
+            "sequence": "catcatcat",
+            "organism": "b.sub",
+            "name": "lib2"
+        }
+    ],
+    "name": "Dna Library"
+}
