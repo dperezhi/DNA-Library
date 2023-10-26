@@ -1,0 +1,20 @@
+{
+    "DNA Sequences": [
+        {
+            "sequence": "atg",
+            "organism": "human",
+            "name": "dna1"
+        },
+        {
+            "sequence": "cat",
+            "organism": "e.coli",
+            "name": "dna2"
+        },
+        {
+            "sequence": "tag",
+            "organism": "b.sub",
+            "name": "dna3"
+        }
+    ],
+    "name": "Dna Library Writer"
+}
