@@ -1,13 +1,23 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class DnaFolder {
+public class DnaFolder implements Writable {
     private ArrayList<Dna> dnaFolder;
+    private String name = "default";
 
-    // EFFECTS: creates DNA folder
+    // EFFECTS: creates DNA folder with default name
     public DnaFolder() {
         dnaFolder = new ArrayList<>();
+    }
+
+    public DnaFolder(String name) {
+        this();
+        this.name = name;
     }
 
     // MODIFIES: this
@@ -84,5 +94,29 @@ public class DnaFolder {
     //getter and setters
     public ArrayList<Dna> getDnaFolder() {
         return dnaFolder;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("DNA Sequences", dnaSequencesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns dna sequence in this Dna Folder as a JSON array
+    private JSONArray dnaSequencesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Dna dna : dnaFolder) {
+            jsonArray.put(dna.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    //EFFECTS: returns name
+    public String getName() {
+        return name;
     }
 }

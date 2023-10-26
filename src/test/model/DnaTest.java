@@ -45,6 +45,7 @@ public class DnaTest {
     void testProteinSeqCodonNotFound() {
         assertEquals("MMXM", dna5.getProteinSequence());
     }
+    
 
     @Test
     void testToString() {

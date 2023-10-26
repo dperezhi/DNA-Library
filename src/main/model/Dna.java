@@ -1,12 +1,15 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
 // Represents a DNA  having a sequence, name, organism and length
-public class Dna {
+public class Dna implements Writable {
     private String sequence;            //DNA sequence
     private String name;                //DNA name
     private String organism;            //DNA sequence Origin organism
@@ -77,6 +80,9 @@ public class Dna {
         return polypeptide;
     }
 
+    /*
+     * EFFECTS: gets translatableSequence from sequence
+     */
     public String getTranslatableSequence() {
         String translatableSequence = sequence;
         int value;
@@ -91,7 +97,7 @@ public class Dna {
      */
     public String toString() {
         String result = "Sequence='" + sequence + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
-        return result + "proteinSequence='" + proteinSequence + "'";
+        return result + ", proteinSequence='" + proteinSequence + "'";
     }
 
     //Getters and Setters
@@ -119,6 +125,9 @@ public class Dna {
         this.name = name;
     }
 
+    /*
+     * EFFECTS: gets organism
+     */
     public String getOrganism() {
         return organism;
     }
@@ -131,7 +140,19 @@ public class Dna {
         this.organism = organism;
     }
 
+    /*
+     * EFFECTS: gets protein sequence
+     */
     public String getProteinSequence() {
         return proteinSequence;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("sequence", sequence);
+        json.put("organism", organism);
+        return json;
     }
 }
