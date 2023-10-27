@@ -46,7 +46,7 @@ public class Dna implements Writable {
                 aminoAcids.add(data[1]);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            //System.out.println(e.getMessage());
         }
         return determineAminoAcidChain(codons, aminoAcids);
     }
