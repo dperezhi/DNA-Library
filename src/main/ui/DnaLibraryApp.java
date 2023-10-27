@@ -8,12 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+//represents a DNA library App
 public class DnaLibraryApp {
     private static final String JSON_STORE = "./data/dnaLibrary.json";
     private static Scanner in;
     private static DnaFolder dnaFolder;
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
 
     // MODIFIES: this
     // EFFECTS: creates a new DnaLibraryApp

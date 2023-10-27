@@ -24,7 +24,7 @@ public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterInvalidFile() {
         try {
-            DnaFolder dnaFolder = new DnaFolder("Invalid Folder");
+            new DnaFolder("Invalid Folder");
             JsonWriter writer = new JsonWriter("./data/*dwq%vdv\0d?@vd  @vd@.json");
             writer.open();
             fail("Exception should be thrown!");

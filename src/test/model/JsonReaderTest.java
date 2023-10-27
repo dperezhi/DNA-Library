@@ -22,7 +22,7 @@ public class JsonReaderTest extends JsonTest {
     void testFileNotFoundReader() {
         JsonReader reader = new JsonReader("./data/notFound.json");
         try {
-            DnaFolder dnaFolder = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // TEST PASSED!

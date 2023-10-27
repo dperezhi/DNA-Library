@@ -49,7 +49,7 @@ public class DnaTest {
 
     @Test
     void testToString() {
-        String expected = "Sequence='ATGATGATGATG', name='test1', organism='B.Subtilis'proteinSequence='MMMM'";
+        String expected = "Sequence='ATGATGATGATG', name='test1', organism='B.Subtilis', proteinSequence='MMMM'";
         assertEquals(expected, dna1.toString());
     }
 

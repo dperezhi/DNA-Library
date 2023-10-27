@@ -6,8 +6,9 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
+// Represents a DNA list with an arbitrary number of DNA objects
 public class DnaFolder implements Writable {
-    private ArrayList<Dna> dnaFolder;
+    private final ArrayList<Dna> dnaFolder;
     private String name = "default";
 
     // EFFECTS: creates DNA folder with default name
@@ -15,6 +16,7 @@ public class DnaFolder implements Writable {
         dnaFolder = new ArrayList<>();
     }
 
+    // EFFECTS: creates DNA folder with a given name
     public DnaFolder(String name) {
         this();
         this.name = name;

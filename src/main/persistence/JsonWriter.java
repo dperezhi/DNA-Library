@@ -13,6 +13,7 @@ import java.io.*;
  Availability: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
  */
 
+// A writer that writes a Dna Folder from JSON data stored in file
 public class JsonWriter {
     private static final int INDENT_FACTOR = 4;
     private PrintWriter writer;
@@ -26,7 +27,7 @@ public class JsonWriter {
     // MODIFIES: this
     // EFFECTS: opens writer, if path to file can't be found for writing throws FileNotFoundException
     public void open() throws FileNotFoundException {
-        writer = new PrintWriter(new File(path));
+        writer = new PrintWriter(path);
     }
 
     // MODIFIES: this

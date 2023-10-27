@@ -8,13 +8,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-// Represents a DNA  having a sequence, name, organism and length
+// Represents a DNA having a sequence, name, organism and length
 public class Dna implements Writable {
     private String sequence;            //DNA sequence
     private String name;                //DNA name
     private String organism;            //DNA sequence Origin organism
-    private int length;                 //length of DNA sequence
-    private String proteinSequence;     //Protein sequence
+    private final int length;                 //length of DNA sequence
+    private final String proteinSequence;     //Protein sequence
 
     /*
      * REQUIRES: sequence is 3 or more characters in length and only contains A,G,C,T
@@ -35,7 +35,7 @@ public class Dna implements Writable {
      */
     private String makeProteinSequence() {
         String path = "./src/main/content/amino-acid-codons.csv";
-        String line = "";
+        String line;
         ArrayList<String> codons = new ArrayList<>();
         ArrayList<String> aminoAcids = new ArrayList<>();
         try {
@@ -46,8 +46,7 @@ public class Dna implements Writable {
                 aminoAcids.add(data[1]);
             }
         } catch (IOException e) {
-            e.getMessage();
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return determineAminoAcidChain(codons, aminoAcids);
     }
@@ -56,7 +55,7 @@ public class Dna implements Writable {
      * EFFECTS: returns Protein sequence based on codon codes.
      */
     private String determineAminoAcidChain(ArrayList<String> codons, ArrayList<String> aminoAcids) {
-        String polypeptide = "";
+        StringBuilder polypeptide = new StringBuilder();
         int lowerIndex = 0;
         int higherIndex = 3;
         String translatableSequence = getTranslatableSequence();
@@ -70,14 +69,14 @@ public class Dna implements Writable {
                 index++;
             }
             if (index == 64) {
-                polypeptide += "X";
+                polypeptide.append("X");
             } else {
-                polypeptide += aminoAcids.get(index);
+                polypeptide.append(aminoAcids.get(index));
             }
             lowerIndex += 3;
             higherIndex += 3;
         }
-        return polypeptide;
+        return polypeptide.toString();
     }
 
     /*
