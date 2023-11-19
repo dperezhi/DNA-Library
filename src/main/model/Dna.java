@@ -26,7 +26,7 @@ public class Dna implements Writable {
 
     //EFFECTS: returns a string with all the field values of the DNA object
     public String toString() {
-        String result = "Sequence='" + nucelotideSequence + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
+        String result = "Sequence='" + nucelotideSequence.getNucleotideSequence() + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
         return result + ", proteinSequence='" + proteinSequence.getProteinSequence() + "'";
     }
 
@@ -40,7 +40,7 @@ public class Dna implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("sequence", nucelotideSequence);
+        json.put("sequence", nucelotideSequence.getNucleotideSequence());
         json.put("organism", organism);
         return json;
     }

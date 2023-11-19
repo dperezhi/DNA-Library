@@ -21,9 +21,18 @@ public class DnaTest {
             dna2 = new Dna("test2", "TTT", "B.Subtilis");
             dna3 = new Dna("test3", "ATTAGTAT", "E.coli");
             dna4 = new Dna("test4", "GCGAGAGTAA", "E.coli");
-            dna5 = new Dna("test5", "ATGATGXDSATG", "E.coli");
         } catch (InvalidCharForNucSeqException e) {
             fail("No exception should be thrown");
+        }
+    }
+
+    @Test
+    void invalidNuceleotideSeq() {
+        try {
+            dna5 = new Dna("test5", "ATGATGXDSATG", "E.coli");
+            fail("No exception should be thrown");
+        } catch (InvalidCharForNucSeqException e) {
+            //Correct path!
         }
     }
 
@@ -39,9 +48,6 @@ public class DnaTest {
         assertEquals("ATTAGTAT", dna3.getNucelotideSequence());
         assertEquals("E.coli", dna3.getOrganism());
         assertEquals("IS", dna3.getProteinSequence());
-
-        assertEquals("MMXM", dna5.getProteinSequence());
-
     }
 
     @Test

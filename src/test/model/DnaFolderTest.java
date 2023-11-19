@@ -98,37 +98,57 @@ class DnaFolderTest {
 
     @Test
     void testModifyDnaNotFound() {
-        assertFalse(folder.modifyDnaDetails(dna1.getName(), "1", "test0"));
-        assertFalse(folder.modifyDnaDetails(dna2.getName(), "2", "test0"));
-        assertFalse(folder.modifyDnaDetails(dna3.getName(), "3", "test0"));
-        assertFalse(folder.modifyDnaDetails(dna4.getName(), "ded", "test0"));
+        try {
+            assertFalse(folder.modifyDnaDetails(dna1.getName(), "1", "test0"));
+            assertFalse(folder.modifyDnaDetails(dna2.getName(), "2", "test0"));
+            assertFalse(folder.modifyDnaDetails(dna3.getName(), "3", "test0"));
+            assertFalse(folder.modifyDnaDetails(dna4.getName(), "ded", "test0"));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("InvalidCharForNucSeqException should have NOT been thrown");
+        }
     }
 
     @Test
     void testModifyDnaSeq() {
         folder.addDna(dna2);
-        assertTrue(folder.modifyDnaDetails(dna2.getName(), "1", "ATG"));
+        try {
+            assertTrue(folder.modifyDnaDetails(dna2.getName(), "1", "ATG"));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("InvalidCharForNucSeqException should have NOT been thrown");
+        }
         assertEquals("ATG", dna2.getNucelotideSequence());
     }
 
     @Test
     void testModifyDnaName() {
         folder.addDna(dna1);
-        assertTrue(folder.modifyDnaDetails(dna1.getName(), "2", "test0"));
+        try {
+            assertTrue(folder.modifyDnaDetails(dna1.getName(), "2", "test0"));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("InvalidCharForNucSeqException should have NOT been thrown");
+        }
         assertEquals("test0", dna1.getName());
     }
 
     @Test
     void testModifyDnaInvalid() {
         folder.addDna(dna1);
-        assertFalse(folder.modifyDnaDetails(dna1.getName(), "5", "test0"));
+        try {
+            assertFalse(folder.modifyDnaDetails(dna1.getName(), "5", "test0"));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("InvalidCharForNucSeqException should have NOT been thrown");
+        }
         assertEquals("test1", dna1.getName());
     }
 
     @Test
     void testModifyDnaOrganism() {
         folder.addDna(dna3);
-        assertTrue(folder.modifyDnaDetails(dna3.getName(), "3", "Human"));
+        try {
+            assertTrue(folder.modifyDnaDetails(dna3.getName(), "3", "Human"));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("InvalidCharForNucSeqException should have NOT been thrown");
+        }
         assertEquals("Human", dna3.getOrganism());
     }
 

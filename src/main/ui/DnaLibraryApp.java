@@ -60,11 +60,16 @@ public class DnaLibraryApp {
     // MODIFIES: this
     // EFFECTS: adds new sequences to the Dna Folder
     public void addSequence() {
-        boolean correct = false;
         System.out.println("    What is the title of the sequence? ");
         String name = in.nextLine();
         System.out.println("    What is the organism of origin? ");
         String organism = in.nextLine();
+        checkValidityNucSeq(name, organism);
+    }
+
+    // EFFECTS: add DNA sequence while checking valid characters
+    public void checkValidityNucSeq(String name, String organism) {
+        boolean correct = false;
         while (!correct) {
             System.out.println("    What is your nucleotide Sequence? ");
             String sequence = in.nextLine();
@@ -159,17 +164,34 @@ public class DnaLibraryApp {
         System.out.println("What do you want to modify (Sequence, Name, or Organism)? ");
         System.out.println("(1) sequence, (2) name, and (3) organism");
         String modified = in.nextLine();
-        System.out.println("What is the new content? ");
-        String newContent = in.nextLine();
-        if (dnaFolder.modifyDnaDetails(name, modified, newContent)) {
+        boolean successfulModification = checkValidityModificationOfNucSeq(name, modified);
+        if (successfulModification) {
             System.out.println("Successful!");
             System.out.println(name + " is now: ");
             Dna dna = dnaFolder.findDnaByName(name);
             System.out.println(dna.toString());
         } else {
-            System.out.println("Failure. An invalid input was detected!");
+            System.out.println("Failure. Unable to determine what is to be modified!");
         }
     }
+
+    // EFFECTS: add DNA sequence while checking valid characters
+    public boolean checkValidityModificationOfNucSeq(String name, String modified) {
+        boolean correct = false;
+        boolean successfulModification = false;
+        while (!correct) {
+            System.out.println("What is the new content? ");
+            String newContent = in.nextLine();
+            try {
+                successfulModification = dnaFolder.modifyDnaDetails(name, modified, newContent);
+            } catch (InvalidCharForNucSeqException e) {
+                System.out.println("Your nucleotide sequence contains invalid characters!");
+                System.out.println("Try again!");
+            }
+        }
+        return  successfulModification;
+    }
+
 
     // EFFECTS: asks the user if they want to load the Dna library
     public void choiceToLoad() {
