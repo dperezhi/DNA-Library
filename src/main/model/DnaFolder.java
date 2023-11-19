@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidCharForNucSeqException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -61,14 +62,14 @@ public class DnaFolder implements Writable {
 
     // MODIFIES: this
     // EFFECTS: modifies DNA fields based on user preference
-    public boolean modifyDnaDetails(String name, String whatIsModified, String newContent) {
+    public boolean modifyDnaDetails(String name, String whatIsModified, String newContent) throws InvalidCharForNucSeqException {
         Dna dnaToModify;
         if ((dnaToModify = findDnaByName(name)) == null) {
             return false;
         }
         switch (whatIsModified) {
             case "1":
-                dnaToModify.setSequence(newContent);
+                dnaToModify.setNucelotideSequence(newContent);
                 break;
             case "2":
                 dnaToModify.setName(newContent);
@@ -84,12 +85,12 @@ public class DnaFolder implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds MoClo ends to DNA sequence
-    public boolean addMoClo(String name) {
+    public boolean addMoClo(String name) throws InvalidCharForNucSeqException {
         Dna dnaToModify;
         if ((dnaToModify = findDnaByName(name)) == null) {
             return false;
         }
-        dnaToModify.setSequence("ctca" + dnaToModify.getSequence() + "cgcg");
+        dnaToModify.setNucelotideSequence("ctca" + dnaToModify.getNucelotideSequence() + "cgcg");
         return true;
     }
 

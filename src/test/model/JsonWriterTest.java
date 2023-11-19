@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidCharForNucSeqException;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -55,9 +56,13 @@ public class JsonWriterTest extends JsonTest {
     void testWriterGeneralWorkroom() {
         try {
             DnaFolder dnaFolder = new DnaFolder("Dna Library Writer");
-            dnaFolder.addDna(new Dna("dna1","atg","human"));
-            dnaFolder.addDna(new Dna("dna2","cat","e.coli"));
-            dnaFolder.addDna(new Dna("dna3","tag","b.sub"));
+            try {
+                dnaFolder.addDna(new Dna("dna1","atg","human"));
+                dnaFolder.addDna(new Dna("dna2","cat","e.coli"));
+                dnaFolder.addDna(new Dna("dna3","tag","b.sub"));
+            } catch (InvalidCharForNucSeqException e) {
+                fail("No exception should be thrown");
+            }
             JsonWriter writer = new JsonWriter("./data/testNormalDnaFolderWriter.json");
             writer.open();
             writer.write(dnaFolder);

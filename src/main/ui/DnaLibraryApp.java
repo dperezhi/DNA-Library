@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.InvalidCharForNucSeqException;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -59,15 +60,24 @@ public class DnaLibraryApp {
     // MODIFIES: this
     // EFFECTS: adds new sequences to the Dna Folder
     public void addSequence() {
+        boolean correct = false;
         System.out.println("    What is the title of the sequence? ");
         String name = in.nextLine();
-        System.out.println("    What are the nucleotides? ");
-        String sequence = in.nextLine();
         System.out.println("    What is the organism of origin? ");
         String organism = in.nextLine();
-        Dna dna = new Dna(name, sequence, organism);
-        dnaFolder.addDna(dna);
-        System.out.println("    Protein Translation: " + dna.getProteinSequence());
+        while (!correct) {
+            System.out.println("    What is your nucleotide Sequence? ");
+            String sequence = in.nextLine();
+            try {
+                Dna dna = new Dna(name, sequence, organism);
+                correct = true;
+                dnaFolder.addDna(dna);
+                System.out.println("    Protein Translation: " + dna.getProteinSequence());
+            } catch (InvalidCharForNucSeqException e) {
+                System.out.println("Your nucleotide sequence contains invalid characters!");
+                System.out.println("Try again!");
+            }
+        }
     }
 
     // EFFECTS: displays menu options
@@ -136,7 +146,7 @@ public class DnaLibraryApp {
         System.out.println(dna.toString());
         if (dnaFolder.addMoClo(name)) {
             System.out.println("MoClo flanks added Successful!");
-            System.out.println("New Sequence: " + dna.getSequence());
+            System.out.println("New Sequence: " + dna.getNucelotideSequence());
         } else {
             System.out.println("Failure. An Invalid Input was detected!");
         }
@@ -191,6 +201,7 @@ public class DnaLibraryApp {
         }
     }
 
+    // EFFECTS: return true if user chose yes, else it returns false
     public boolean choiceYesOrNo(String message) {
         String answer;
         do {

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import exceptions.InvalidCharForNucSeqException;
 import model.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -60,7 +61,12 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         String sequence = jsonObject.getString("sequence");
         String organism = jsonObject.getString("organism");
-        Dna dna = new Dna(name, sequence, organism);
+        Dna dna;
+        try {
+            dna = new Dna(name, sequence, organism);
+        } catch (InvalidCharForNucSeqException e) {
+            throw new RuntimeException(e);
+        }
         dnaFolder.addDna(dna);
     }
 

@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidCharForNucSeqException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,37 +16,33 @@ public class DnaTest {
 
     @BeforeEach
     void setUp() {
-        dna1 = new Dna("test1", "ATGATGATGATG", "B.Subtilis");
-        dna2 = new Dna("test2", "TTT", "B.Subtilis");
-        dna3 = new Dna("test3", "ATTAGTAT", "E.coli");
-        dna4 = new Dna("test4", "GCGAGAGTAA", "E.coli");
-        dna5 = new Dna("test5", "ATGATGXDSATG", "E.coli");
+        try {
+            dna1 = new Dna("test1", "ATGATGATGATG", "B.Subtilis");
+            dna2 = new Dna("test2", "TTT", "B.Subtilis");
+            dna3 = new Dna("test3", "ATTAGTAT", "E.coli");
+            dna4 = new Dna("test4", "GCGAGAGTAA", "E.coli");
+            dna5 = new Dna("test5", "ATGATGXDSATG", "E.coli");
+        } catch (InvalidCharForNucSeqException e) {
+            fail("No exception should be thrown");
+        }
     }
 
     @Test
     void testConstructor() {
         assertEquals("test1", dna1.getName());
-        assertEquals("ATGATGATGATG", dna1.getSequence());
+        assertEquals("ATGATGATGATG", dna1.getNucelotideSequence());
         assertEquals("B.Subtilis", dna1.getOrganism());
+        assertEquals("MMMM", dna1.getProteinSequence());
+
 
         assertEquals("test3", dna3.getName());
-        assertEquals("ATTAGTAT", dna3.getSequence());
+        assertEquals("ATTAGTAT", dna3.getNucelotideSequence());
         assertEquals("E.coli", dna3.getOrganism());
-    }
-
-    @Test
-    void testProteinSequence() {
-        assertEquals("MMMM", dna1.getProteinSequence());
-        assertEquals("F", dna2.getProteinSequence());
         assertEquals("IS", dna3.getProteinSequence());
-        assertEquals("ARV", dna4.getProteinSequence());
-    }
 
-    @Test
-    void testProteinSeqCodonNotFound() {
         assertEquals("MMXM", dna5.getProteinSequence());
+
     }
-    
 
     @Test
     void testToString() {

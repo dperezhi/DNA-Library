@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidCharForNucSeqException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,10 +17,14 @@ class DnaFolderTest {
     @BeforeEach
     void setUp() {
         folder = new DnaFolder();
-        dna1 = new Dna("test1", "ATGATGATGATG", "B.Subtilis");
-        dna2 = new Dna("test2", "TTT", "B.Subtilis");
-        dna3 = new Dna("test3", "ATTAGTAT", "E.coli");
-        dna4 = new Dna("test4", "GCGAGAGTAA", "E.coli");
+        try {
+            dna1 = new Dna("test1", "ATGATGATGATG", "B.Subtilis");
+            dna2 = new Dna("test2", "TTT", "B.Subtilis");
+            dna3 = new Dna("test3", "ATTAGTAT", "E.coli");
+            dna4 = new Dna("test4", "GCGAGAGTAA", "E.coli");
+        } catch (InvalidCharForNucSeqException e) {
+            fail("No exception should be thrown");
+        }
     }
 
     @Test
@@ -103,7 +108,7 @@ class DnaFolderTest {
     void testModifyDnaSeq() {
         folder.addDna(dna2);
         assertTrue(folder.modifyDnaDetails(dna2.getName(), "1", "ATG"));
-        assertEquals("ATG", dna2.getSequence());
+        assertEquals("ATG", dna2.getNucelotideSequence());
     }
 
     @Test
@@ -139,6 +144,6 @@ class DnaFolderTest {
     void testAddMoClo() {
         folder.addDna(dna1);
         assertTrue(folder.addMoClo(dna1.getName()));
-        assertEquals("ctcaATGATGATGATGcgcg", dna1.getSequence());
+        assertEquals("ctcaATGATGATGATGcgcg", dna1.getNucelotideSequence());
     }
 }
