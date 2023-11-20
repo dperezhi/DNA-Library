@@ -19,6 +19,10 @@ public class DnaDisplayed extends JPanel {
         }
     }
 
+    public void addExtraDnaToInterface() {
+        this.add(addDnaToInterface(dnaFolder.getDnaFolder().size() - 1));
+    }
+
     public JButton addDnaToInterface(int index) { //ui.panels.buttonFunctionality.DisplayDnaToWorkspace
         JButton dnaButton = new JButton();
         JPanel dnaEntryPanel = new JPanel();

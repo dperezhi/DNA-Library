@@ -3,6 +3,7 @@ package ui.panels.buttonFunctionality.popup;
 import exceptions.InvalidCharForNucSeqException;
 import model.Dna;
 import model.DnaFolder;
+import ui.panels.sidebar.DnaDisplayed;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,12 +14,14 @@ public abstract class AddDnaFrame extends JFrame {
     private DnaFolder dnaFolder;
     private Dna dna;
     private JFrame frame;
-    JTextField nameEntry;
-    JTextField organismEntry;
+    private DnaDisplayed updateDnaDisplayPanel;
+    private JTextField nameEntry;
+    private JTextField organismEntry;
 
-    public AddDnaFrame(DnaFolder dnaFolder) {
+    public AddDnaFrame(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
         super("Add DNA to the library!");
         this.dnaFolder = dnaFolder;
+        this.updateDnaDisplayPanel = updateDnaDisplayPanel;
         this.frame = this;
         //this.frame = Objects.requireNonNullElse(frame, this);
         this.dna = new Dna();
@@ -66,6 +69,10 @@ public abstract class AddDnaFrame extends JFrame {
         return organismEntry;
     }
 
+    public DnaDisplayed getUpdateDnaDisplayPanel() {
+        return updateDnaDisplayPanel;
+    }
+
     public JPanel getPanel() {
         return panel;
     }
@@ -81,4 +88,6 @@ public abstract class AddDnaFrame extends JFrame {
     public Dna getDna() {
         return dna;
     }
+
+
 }

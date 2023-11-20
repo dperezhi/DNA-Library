@@ -7,10 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Header extends JPanel {
-    DnaFolder dnaFolder;
+    private DnaFolder dnaFolder;
+    private DnaDisplayed updateDnaDisplayPanel;
 
-    public Header(DnaFolder dnaFolder) {
+    public Header(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
         this.dnaFolder = dnaFolder;
+        this.updateDnaDisplayPanel = updateDnaDisplayPanel;
         this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         this.setLayout(new GridLayout(0,1));
         this.setBackground(Color.blue);
@@ -33,7 +35,8 @@ public class Header extends JPanel {
         JLabel l1 = new JLabel("My Library");
         topPanel.add(l1);
 
-        AddDnaToLibrary addDnaButton = new AddDnaToLibrary(dnaFolder); //ui.panels.buttonFunctionality.AddDnaToLibrary
+        //ui.panels.buttonFunctionality.AddDnaToLibrary
+        AddDnaToLibrary addDnaButton = new AddDnaToLibrary(dnaFolder, updateDnaDisplayPanel);
         topPanel.add(addDnaButton);
 
         return topPanel;

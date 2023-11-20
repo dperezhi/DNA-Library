@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SideBar extends JPanel {
-    DnaFolder dnaFolder;
-    JPanel updateDnaDisplayPanel;
+    private DnaFolder dnaFolder;
+    private DnaDisplayed updateDnaDisplayPanel;
 
     public SideBar(DnaFolder dnaFolder) {
         this.dnaFolder = dnaFolder;
@@ -16,15 +16,8 @@ public class SideBar extends JPanel {
         this.setBackground(Color.green);
         this.setSize(new Dimension(250,500));
 
-        this.add(new Header(dnaFolder), BorderLayout.CENTER);
-        this.add(new DnaDisplayed(dnaFolder), BorderLayout.CENTER);
-    }
-
-    public JPanel getUpdateDnaDisplayPanel() {
-        return updateDnaDisplayPanel;
-    }
-
-    public void setUpdateDnaDisplayPanel(JPanel updateDnaDisplayPanel) {
-        this.updateDnaDisplayPanel = updateDnaDisplayPanel;
+        DnaDisplayed updateDnaDisplayPanel = new DnaDisplayed(dnaFolder);
+        this.add(new Header(dnaFolder, updateDnaDisplayPanel), BorderLayout.CENTER);
+        this.add(updateDnaDisplayPanel, BorderLayout.CENTER);
     }
 }

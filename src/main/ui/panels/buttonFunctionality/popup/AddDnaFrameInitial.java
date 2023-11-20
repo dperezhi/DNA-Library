@@ -1,14 +1,15 @@
 package ui.panels.buttonFunctionality.popup;
 
 import model.DnaFolder;
+import ui.panels.sidebar.DnaDisplayed;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class AddDnaFrameInitial extends AddDnaFrame {
 
-    public AddDnaFrameInitial(DnaFolder dnaFolder) {
-        super(dnaFolder);
+    public AddDnaFrameInitial(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
+        super(dnaFolder, updateDnaDisplayPanel);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         nucleotideSection();
@@ -24,7 +25,7 @@ public class AddDnaFrameInitial extends AddDnaFrame {
         JTextField nucleotideEntry = new JTextField("   Enter the text...");
         JButton addDnaButton;
         addDnaButton = new GetDnaInfoFromUser(super.getDna(), getNameEntry(), getOrganismEntry(),nucleotideEntry,
-                getDnaFolder(), getFrame());
+                getDnaFolder(), getFrame(), getUpdateDnaDisplayPanel());
         super.getPanel().add(nucleotideEntry);
         super.getPanel().add(addDnaButton);
     }

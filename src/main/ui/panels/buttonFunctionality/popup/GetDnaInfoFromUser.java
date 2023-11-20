@@ -3,6 +3,7 @@ package ui.panels.buttonFunctionality.popup;
 import exceptions.InvalidCharForNucSeqException;
 import model.Dna;
 import model.DnaFolder;
+import ui.panels.sidebar.DnaDisplayed;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,14 +17,16 @@ public class GetDnaInfoFromUser extends JButton implements ActionListener {
     private DnaFolder dnaFolder;
     private JFrame frame;
     private JFrame newFrame;
+    private DnaDisplayed updateDnaDisplayPanel;
 
-    public GetDnaInfoFromUser(Dna dna, JTextField textName, JTextField textOrganism,
-                              JTextField textNucleotideSeq, DnaFolder dnaFolder, JFrame frame) {
+    public GetDnaInfoFromUser(Dna dna, JTextField textName, JTextField textOrganism, JTextField textNucleotideSeq,
+                              DnaFolder dnaFolder, JFrame frame, DnaDisplayed updateDnaDisplayPanel) {
         super("submit");
         this.dna = dna;
         this.textName = textName;
         this.textOrganism = textOrganism;
         this.textNucleotideSeq = textNucleotideSeq;
+        this.updateDnaDisplayPanel = updateDnaDisplayPanel;
         this.dnaFolder = dnaFolder;
         this.frame = frame;
         this.addActionListener(this);
@@ -39,24 +42,15 @@ public class GetDnaInfoFromUser extends JButton implements ActionListener {
             dna.setOrganism(textOrganism.getText());
             textOrganism.setText("   ");
 
-            //frame.setVisible(false);
-            //frame.dispose();
             try {
-                //frame.setVisible(false);
-                //frame.dispose();
                 dna.setNucleotideSequence(textNucleotideSeq.getText());
                 dnaFolder.addDna(dna);
+                updateDnaDisplayPanel.addExtraDnaToInterface();
             } catch (InvalidCharForNucSeqException ex) {
-                //frame.setVisible(false);
-                //frame.dispose();
-                newFrame = new AddDnaFrameInvalidCharacter(dnaFolder);
-                //frame.setVisible(false);
-                //frame.dispose();
+                newFrame = new AddDnaFrameInvalidCharacter(dnaFolder, updateDnaDisplayPanel);
             }
             frame.setVisible(false);
             frame.dispose();
-            //newFrame.setVisible(false);
-            //newFrame.dispose();
             textNucleotideSeq.setText("   ");
         }
     }
