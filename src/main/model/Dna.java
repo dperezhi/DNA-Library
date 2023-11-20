@@ -33,8 +33,9 @@ public class Dna implements Writable {
 
     //EFFECTS: returns a string with all the field values of the DNA object
     public String toString() {
-        String result = "Sequence='" + nucleotideSequence.getNucleotideSequence() + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
-        return result + ", proteinSequence='" + proteinSequence.getProteinSequence() + "'";
+        String sequenceString = "Sequence='" + nucleotideSequence.getNucleotideSequence();
+        String result = '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
+        return sequenceString + result + ", proteinSequence='" + proteinSequence.getProteinSequence() + "'";
     }
 
 

@@ -11,8 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// Citation: https://introcs.cs.princeton.edu/java/15inout/GUI.java.html
-
 //Creates a Graphical User Interface for the DNA Library
 public class GUI implements ActionListener {
     private JFrame frame;

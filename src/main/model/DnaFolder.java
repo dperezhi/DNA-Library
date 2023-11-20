@@ -62,7 +62,8 @@ public class DnaFolder implements Writable {
 
     // MODIFIES: this
     // EFFECTS: modifies DNA fields based on user preference
-    public boolean modifyDnaDetails(String name, String whatIsModified, String newContent) throws InvalidCharForNucSeqException {
+    public boolean modifyDnaDetails(String name, String whatIsModified, String newContent)
+            throws InvalidCharForNucSeqException {
         Dna dnaToModify;
         if ((dnaToModify = findDnaByName(name)) == null) {
             return false;
