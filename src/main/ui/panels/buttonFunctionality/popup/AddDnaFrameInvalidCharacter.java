@@ -21,11 +21,10 @@ public class AddDnaFrameInvalidCharacter extends AddDnaFrame {
     public void nucleotideSection() {
         super.getPanel().add(new JLabel("What is the nucleotide sequence (valid characters: A,T,G,C,N)? "));
         JTextField nucleotideEntry = new JTextField("   Enter the text...");
-        JButton nucleotideButton;
-        nucleotideButton = new GetNucleotideSeqFromUser(
-                super.getDna(), nucleotideEntry, super.getDnaFolder(), super.getFrame());
+        JButton addDnaButton = new GetDnaInfoFromUser(super.getDna(), getNameEntry(), getOrganismEntry(),
+                nucleotideEntry, getDnaFolder(), getFrame());
         super.getPanel().add(nucleotideEntry);
-        super.getPanel().add(nucleotideButton);
+        super.getPanel().add(addDnaButton);
         super.getPanel().add(new JLabel("Invalid Character(s) Detected. Try Again!"));
     }
 }

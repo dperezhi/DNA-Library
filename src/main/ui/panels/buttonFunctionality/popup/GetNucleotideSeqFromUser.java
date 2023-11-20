@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//NEED TO BE DELETED
 public class GetNucleotideSeqFromUser extends JButton implements ActionListener {
     private Dna dna;
     private JTextField textField;

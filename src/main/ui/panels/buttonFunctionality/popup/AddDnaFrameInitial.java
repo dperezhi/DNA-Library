@@ -23,7 +23,8 @@ public class AddDnaFrameInitial extends AddDnaFrame {
         super.getPanel().add(new JLabel("What is the DNA sequence (valid characters: A, T, G, C, N)? "));
         JTextField nucleotideEntry = new JTextField("   Enter the text...");
         JButton addDnaButton;
-        addDnaButton = new GetNucleotideSeqFromUser(super.getDna(), nucleotideEntry, getDnaFolder(), getFrame());
+        addDnaButton = new GetDnaInfoFromUser(super.getDna(), getNameEntry(), getOrganismEntry(),nucleotideEntry,
+                getDnaFolder(), getFrame());
         super.getPanel().add(nucleotideEntry);
         super.getPanel().add(addDnaButton);
     }

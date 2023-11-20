@@ -23,7 +23,5 @@ public class AddDnaToLibrary extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         frame = new AddDnaFrameInitial(dnaFolder, frame);
-        frame.setVisible(false);
-        frame.dispose();
     }
 }

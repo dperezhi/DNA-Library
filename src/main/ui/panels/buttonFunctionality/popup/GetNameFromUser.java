@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//NEED TO BE DELETED
 public class GetNameFromUser extends JButton implements ActionListener {
     private Dna dna;
     private JTextField textField;
@@ -24,6 +25,7 @@ public class GetNameFromUser extends JButton implements ActionListener {
         if (s.equals("submit")) {
             dna.setName(textField.getText());
             textField.setText("   ");
+
         }
     }
 }
