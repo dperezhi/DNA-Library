@@ -6,6 +6,7 @@ import model.DnaFolder;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public abstract class AddDnaFrame extends JFrame {
     private JPanel panel;
@@ -15,10 +16,11 @@ public abstract class AddDnaFrame extends JFrame {
     JTextField nameEntry;
     JTextField organismEntry;
 
-    public AddDnaFrame(DnaFolder dnaFolder, JFrame frame) {
+    public AddDnaFrame(DnaFolder dnaFolder) {
         super("Add DNA to the library!");
         this.dnaFolder = dnaFolder;
-        this.frame = frame;
+        this.frame = this;
+        //this.frame = Objects.requireNonNullElse(frame, this);
         this.dna = new Dna();
 
         panel = new JPanel();

@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AddDnaFrameInvalidCharacter extends AddDnaFrame {
-    public AddDnaFrameInvalidCharacter(DnaFolder dnaFolder, JFrame frame) {
-        super(dnaFolder, frame);
+    public AddDnaFrameInvalidCharacter(DnaFolder dnaFolder) {
+        super(dnaFolder);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         nucleotideSection();

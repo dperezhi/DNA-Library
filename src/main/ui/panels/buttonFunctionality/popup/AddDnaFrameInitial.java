@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class AddDnaFrameInitial extends AddDnaFrame {
 
-    public AddDnaFrameInitial(DnaFolder dnaFolder, JFrame frame) {
-        super(dnaFolder, frame);
+    public AddDnaFrameInitial(DnaFolder dnaFolder) {
+        super(dnaFolder);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         nucleotideSection();
