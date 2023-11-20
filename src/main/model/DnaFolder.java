@@ -69,7 +69,7 @@ public class DnaFolder implements Writable {
         }
         switch (whatIsModified) {
             case "1":
-                dnaToModify.setNucelotideSequence(newContent);
+                dnaToModify.setNucleotideSequence(newContent);
                 break;
             case "2":
                 dnaToModify.setName(newContent);
@@ -91,7 +91,7 @@ public class DnaFolder implements Writable {
             return false;
         }
         try {
-            dnaToModify.setNucelotideSequence("ctca" + dnaToModify.getNucelotideSequence() + "cgcg");
+            dnaToModify.setNucleotideSequence("ctca" + dnaToModify.getNucleotideSequence() + "cgcg");
         } catch (InvalidCharForNucSeqException e) {
             throw new RuntimeException(e);
         }

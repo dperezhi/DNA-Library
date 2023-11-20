@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JsonTest {
     protected void checkDnaDetails(String name, String sequence, String organism, Dna dna) {
         assertEquals(name, dna.getName());
-        assertEquals(sequence, dna.getNucelotideSequence());
+        assertEquals(sequence, dna.getNucleotideSequence());
         assertEquals(organism, dna.getOrganism());
     }
 }

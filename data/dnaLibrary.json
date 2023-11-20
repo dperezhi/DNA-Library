@@ -1,15 +1,25 @@
 {
     "DNA Sequences": [
         {
-            "sequence": "atgatgatg",
-            "organism": "e.coli",
-            "name": "lib1"
+            "sequence": "atgctagtcgtagctagctagtcgatcgta",
+            "organism": "Japan",
+            "name": "Yuko"
         },
         {
-            "sequence": "catcatcat",
-            "organism": "b.sub",
-            "name": "lib2"
+            "sequence": "cgtagctagtcgatcgtagctatcgtagtcatgca",
+            "organism": "Toronto",
+            "name": "Irene"
+        },
+        {
+            "sequence": "gtcatgctagctgatcgtagctagctagtcgatca",
+            "organism": "Korea",
+            "name": "Jay"
+        },
+        {
+            "sequence": "catcatcatcatcatcatcagtacgtagctgatc",
+            "organism": "Mexico",
+            "name": "Diego"
         }
     ],
-    "name": "Dna Library"
+    "name": "default"
 }

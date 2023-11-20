@@ -22,7 +22,7 @@ public class NucleotideSequence {
     //          case-insensitive matching) and [atcg] is matched characters, + is for one or more instance of those
     //          characters.
     private boolean isValid(String sequence) {
-        return sequence.matches("(?i)[actg]+");
+        return sequence.matches("(?i)[actgn]+");
     }
 
     /*

@@ -88,13 +88,14 @@ public class DnaLibraryApp {
     // EFFECTS: displays menu options
     public void menuDisplay() {
         System.out.println("Main Menu");
-        System.out.println("These are the current DNAs in your folder: ");
+        System.out.print("These are the current DNAs in your folder: ");
         showDnaFolder();
         System.out.println("Choose one of the following options (1, 2, 3, or 4):");
         System.out.println("(1) Add MoClo flanks to a sequence");
         System.out.println("(2) Add a DNA Sequence");
         System.out.println("(3) Modify a DNA Sequence");
-        System.out.println("(4) Close");
+        System.out.println("(4) Show all Current DNA sequences");
+        System.out.println("(5) Close");
     }
 
     // EFFECTS: gets decision of user to access menu options
@@ -110,6 +111,9 @@ public class DnaLibraryApp {
                 modifyDnaDetails();
                 break;
             case "4":
+                showAllDna();
+                break;
+            case "5":
                 return true;
             default:
                 System.out.println("Invalid input!");
@@ -151,9 +155,16 @@ public class DnaLibraryApp {
         System.out.println(dna.toString());
         if (dnaFolder.addMoClo(name)) {
             System.out.println("MoClo flanks added Successful!");
-            System.out.println("New Sequence: " + dna.getNucelotideSequence());
+            System.out.println("New Sequence: " + dna.getNucleotideSequence());
         } else {
             System.out.println("Failure. An Invalid Input was detected!");
+        }
+    }
+
+    // EFFECTS: shows all DNAs in the DNA library
+    public void showAllDna() {
+        for (Dna dna: dnaFolder.getDnaFolder()) {
+            System.out.println(dna.toString());
         }
     }
 
@@ -184,6 +195,7 @@ public class DnaLibraryApp {
             String newContent = in.nextLine();
             try {
                 successfulModification = dnaFolder.modifyDnaDetails(name, modified, newContent);
+                correct = true;
             } catch (InvalidCharForNucSeqException e) {
                 System.out.println("Your nucleotide sequence contains invalid characters!");
                 System.out.println("Try again!");

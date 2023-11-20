@@ -12,7 +12,6 @@ public class DnaTest {
     private Dna dna2;
     private Dna dna3;
     private Dna dna4;
-    private Dna dna5;
 
     @BeforeEach
     void setUp() {
@@ -27,7 +26,8 @@ public class DnaTest {
     }
 
     @Test
-    void invalidNuceleotideSeq() {
+    void constructorInvalidNuceleotideSeq() {
+        Dna dna5;
         try {
             dna5 = new Dna("test5", "ATGATGXDSATG", "E.coli");
             fail("No exception should be thrown");
@@ -39,13 +39,13 @@ public class DnaTest {
     @Test
     void testConstructor() {
         assertEquals("test1", dna1.getName());
-        assertEquals("ATGATGATGATG", dna1.getNucelotideSequence());
+        assertEquals("ATGATGATGATG", dna1.getNucleotideSequence());
         assertEquals("B.Subtilis", dna1.getOrganism());
         assertEquals("MMMM", dna1.getProteinSequence());
 
 
         assertEquals("test3", dna3.getName());
-        assertEquals("ATTAGTAT", dna3.getNucelotideSequence());
+        assertEquals("ATTAGTAT", dna3.getNucleotideSequence());
         assertEquals("E.coli", dna3.getOrganism());
         assertEquals("IS", dna3.getProteinSequence());
     }

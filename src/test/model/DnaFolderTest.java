@@ -116,7 +116,7 @@ class DnaFolderTest {
         } catch (InvalidCharForNucSeqException e) {
             fail("InvalidCharForNucSeqException should have NOT been thrown");
         }
-        assertEquals("ATG", dna2.getNucelotideSequence());
+        assertEquals("ATG", dna2.getNucleotideSequence());
     }
 
     @Test
@@ -164,6 +164,6 @@ class DnaFolderTest {
     void testAddMoClo() {
         folder.addDna(dna1);
         assertTrue(folder.addMoClo(dna1.getName()));
-        assertEquals("ctcaATGATGATGATGcgcg", dna1.getNucelotideSequence());
+        assertEquals("ctcaATGATGATGATGcgcg", dna1.getNucleotideSequence());
     }
 }

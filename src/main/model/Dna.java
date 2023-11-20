@@ -6,7 +6,7 @@ import persistence.Writable;
 
 // Represents a DNA having a sequence, name, organism and length
 public class Dna implements Writable {
-    private NucleotideSequence nucelotideSequence;                            //DNA sequence
+    private NucleotideSequence nucleotideSequence;                            //DNA sequence
     private String name;                                          //DNA name
     private String organism;                                      //DNA sequence Origin organism
     private ProteinSequence proteinSequence;                      //Protein sequence
@@ -17,16 +17,16 @@ public class Dna implements Writable {
      * EFFECTS: sequence string is set to sequence; name string is set to string
      *          the length is set to the sequence length; Organism is set. The protein sequence is generated.
      */
-    public Dna(String name, String nucelotideSequence, String organism) throws InvalidCharForNucSeqException {
-        this.nucelotideSequence = new NucleotideSequence(nucelotideSequence);
+    public Dna(String name, String nucleotideSequence, String organism) throws InvalidCharForNucSeqException {
+        this.nucleotideSequence = new NucleotideSequence(nucleotideSequence);
         this.name = name;
         this.organism = organism;
-        proteinSequence = new ProteinSequence(nucelotideSequence);
+        proteinSequence = new ProteinSequence(nucleotideSequence);
     }
 
     //EFFECTS: returns a string with all the field values of the DNA object
     public String toString() {
-        String result = "Sequence='" + nucelotideSequence.getNucleotideSequence() + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
+        String result = "Sequence='" + nucleotideSequence.getNucleotideSequence() + '\'' + ", name='" + name + '\'' + ", organism='" + organism + '\'';
         return result + ", proteinSequence='" + proteinSequence.getProteinSequence() + "'";
     }
 
@@ -40,7 +40,7 @@ public class Dna implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-        json.put("sequence", nucelotideSequence.getNucleotideSequence());
+        json.put("sequence", nucleotideSequence.getNucleotideSequence());
         json.put("organism", organism);
         return json;
     }
@@ -51,14 +51,14 @@ public class Dna implements Writable {
      */
 
     //EFFECTS: gets nucleotide sequence
-    public String getNucelotideSequence() {
-        return nucelotideSequence.getNucleotideSequence();
+    public String getNucleotideSequence() {
+        return nucleotideSequence.getNucleotideSequence();
     }
 
     //MODIFIES: this
     //EFFECTS: set the a new value for sequence
-    public void setNucelotideSequence(String nucelotideSequence) throws InvalidCharForNucSeqException {
-        this.nucelotideSequence = new NucleotideSequence(nucelotideSequence);
+    public void setNucleotideSequence(String nucleotideSequence) throws InvalidCharForNucSeqException {
+        this.nucleotideSequence = new NucleotideSequence(nucleotideSequence);
     }
 
     //EFFECTS: gets name
