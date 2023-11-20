@@ -1,11 +1,16 @@
 package ui.panels.sidebar;
 
+import model.DnaFolder;
+import ui.panels.buttonFunctionality.AddDnaToLibrary;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Header extends JPanel {
+    DnaFolder dnaFolder;
 
-    public Header() {
+    public Header(DnaFolder dnaFolder) {
+        this.dnaFolder = dnaFolder;
         this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         this.setLayout(new GridLayout(0,1));
         this.setBackground(Color.blue);
@@ -28,8 +33,8 @@ public class Header extends JPanel {
         JLabel l1 = new JLabel("My Library");
         topPanel.add(l1);
 
-        JButton b1 = new JButton("+"); //ui.panels.buttonFunctionality.AddDnaToLibrary
-        topPanel.add(b1);
+        AddDnaToLibrary addDnaButton = new AddDnaToLibrary(dnaFolder); //ui.panels.buttonFunctionality.AddDnaToLibrary
+        topPanel.add(addDnaButton);
 
         return topPanel;
     }

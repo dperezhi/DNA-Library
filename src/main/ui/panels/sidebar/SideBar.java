@@ -15,7 +15,7 @@ public class SideBar extends JPanel {
         this.setBackground(Color.green);
         this.setSize(new Dimension(250,500));
 
-        this.add(new Header(),BorderLayout.CENTER);
+        this.add(new Header(dnaFolder), BorderLayout.CENTER);
         this.add(new DnaDisplayed(dnaFolder),BorderLayout.CENTER);
     }
 }

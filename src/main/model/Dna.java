@@ -12,6 +12,13 @@ public class Dna implements Writable {
     private ProteinSequence proteinSequence;                      //Protein sequence
 
     /*
+     * EFFECTS: Empty DNA object
+     */
+    public Dna() {
+        this.name = "new";
+    }
+
+    /*
      * REQUIRES: sequence is 3 or more characters in length and only contains A,G,C,T
      * MODIFIES: this
      * EFFECTS: sequence string is set to sequence; name string is set to string
