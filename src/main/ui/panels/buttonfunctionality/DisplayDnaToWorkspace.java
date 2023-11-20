@@ -1,4 +1,4 @@
-package ui.panels.buttonFunctionality;
+package ui.panels.buttonfunctionality;
 
 import javax.swing.*;
 

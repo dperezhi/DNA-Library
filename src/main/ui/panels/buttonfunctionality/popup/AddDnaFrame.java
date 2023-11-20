@@ -1,13 +1,11 @@
-package ui.panels.buttonFunctionality.popup;
+package ui.panels.buttonfunctionality.popup;
 
-import exceptions.InvalidCharForNucSeqException;
 import model.Dna;
 import model.DnaFolder;
 import ui.panels.sidebar.DnaDisplayed;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
 public abstract class AddDnaFrame extends JFrame {
     private JPanel panel;

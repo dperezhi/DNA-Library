@@ -1,7 +1,7 @@
 package ui.panels.sidebar;
 
 import model.DnaFolder;
-import ui.panels.buttonFunctionality.AddDnaToLibrary;
+import ui.panels.buttonfunctionality.AddDnaToLibrary;
 
 import javax.swing.*;
 import java.awt.*;
