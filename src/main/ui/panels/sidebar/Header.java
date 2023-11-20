@@ -28,7 +28,7 @@ public class Header extends JPanel {
         JLabel l1 = new JLabel("My Library");
         topPanel.add(l1);
 
-        JButton b1 = new JButton("+");
+        JButton b1 = new JButton("+"); //ui.panels.buttonFunctionality.AddDnaToLibrary
         topPanel.add(b1);
 
         return topPanel;

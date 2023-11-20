@@ -11,9 +11,11 @@ public class FileMenu extends JPanel {
         this.setLayout(new GridLayout(0,4));
         this.setBackground(Color.cyan);
 
+        //package ui.panels.buttonFunctionality.Save
         JButton b1 = new JButton("SAVE");
         this.add(b1);
 
+        //package ui.panels.buttonFunctionality.Load
         JButton b2 = new JButton("LOAD");
         this.add(b2);
 

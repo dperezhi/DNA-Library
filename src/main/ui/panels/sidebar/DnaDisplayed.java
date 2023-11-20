@@ -19,7 +19,7 @@ public class DnaDisplayed extends JPanel {
         }
     }
 
-    public JButton addDnaToInterface(int index) {
+    public JButton addDnaToInterface(int index) { //ui.panels.buttonFunctionality.DisplayDnaToWorkspace
         JButton dnaButton = new JButton();
         JPanel dnaEntryPanel = new JPanel();
         dnaButton.add(dnaEntryPanel);
@@ -39,7 +39,9 @@ public class DnaDisplayed extends JPanel {
 
         JMenuBar menuBar2 = new JMenuBar();
         JMenu menu = new JMenu("...");
+        //ui.panels.buttonFunctionality.ModifyDna
         JMenuItem menuItem1 = new JMenuItem("Modify DNA");
+        //ui.panels.buttonFunctionality.AddsMoCloFlanks
         JMenuItem menuItem2 = new JMenuItem("Add MoClo flanks... to be implemented");
         menu.add(menuItem1);
         menu.add(menuItem2);
