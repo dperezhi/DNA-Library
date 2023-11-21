@@ -1,8 +1,8 @@
 package ui.panels.buttonfunctionality;
 
 import model.DnaFolder;
-import ui.panels.buttonfunctionality.popup.AddDnaFrame;
-import ui.panels.buttonfunctionality.popup.AddDnaFrameInitial;
+import ui.panels.buttonfunctionality.popup.adddna.AddDnaFrame;
+import ui.panels.buttonfunctionality.popup.adddna.AddDnaFrameInitial;
 import ui.panels.sidebar.DnaDisplayed;
 
 import javax.swing.*;

@@ -15,7 +15,7 @@ public class WorkSpace extends JPanel {
         this.setLayout(new GridLayout(0,1));
         this.setBackground(Color.red);
 
-        this.add(new FileMenu(),BorderLayout.CENTER);
+        this.add(new FileMenu(dnaFolder),BorderLayout.CENTER);
         this.add(new MainContent(dnaFolder),BorderLayout.CENTER);
     }
 }

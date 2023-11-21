@@ -1,4 +1,4 @@
-package ui.panels.buttonfunctionality.popup;
+package ui.panels.buttonfunctionality.popup.adddna;
 
 import model.DnaFolder;
 import ui.panels.sidebar.DnaDisplayed;

@@ -1,4 +1,4 @@
-package ui.panels.buttonfunctionality.popup;
+package ui.panels.buttonfunctionality.popup.adddna;
 
 import exceptions.InvalidCharForNucSeqException;
 import model.Dna;

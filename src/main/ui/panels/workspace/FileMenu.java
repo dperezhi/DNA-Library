@@ -1,19 +1,24 @@
 package ui.panels.workspace;
 
+import model.DnaFolder;
+import ui.panels.buttonfunctionality.Save;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class FileMenu extends JPanel {
+    private DnaFolder dnaFolder;
 
-    public FileMenu() {
+    public FileMenu(DnaFolder dnaFolder) {
         //JPanel p5 = new JPanel();
+        this.dnaFolder = dnaFolder;
         this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         this.setLayout(new GridLayout(0,4));
         this.setBackground(Color.cyan);
 
         //package ui.panels.buttonFunctionality.Save
-        JButton b1 = new JButton("SAVE");
-        this.add(b1);
+        Save saveButton = new Save(dnaFolder);
+        this.add(saveButton);
 
         //package ui.panels.buttonFunctionality.Load
         JButton b2 = new JButton("LOAD");
