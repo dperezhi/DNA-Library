@@ -42,6 +42,7 @@ public class SavePathButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         name = textField.getText();
+        dnaFolder.setName(name);
         textField.setText("   ");
         pathOfSave += name + ".json";
         jsonWriter = new JsonWriter(pathOfSave);

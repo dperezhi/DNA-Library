@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 
 public class Save extends JButton implements ActionListener {
     private DnaFolder dnaFolder;
-    private JFrame frame;
 
     public Save(DnaFolder dnaFolder) {
         this.dnaFolder = dnaFolder;
