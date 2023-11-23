@@ -49,6 +49,8 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(0, dnaFolder.getDnaFolder().size());
         } catch (IOException e) {
             fail("Exceptions should not be thrown!");
+        } catch (InvalidCharForNucSeqException e) {
+            fail("Exceptions should not be thrown!");
         }
     }
 
@@ -77,6 +79,8 @@ public class JsonWriterTest extends JsonTest {
             checkDnaDetails("dna3","tag","b.sub",dnaSeqs.get(2));
             assertEquals(3, dnaSeqs.size());
         } catch (IOException e) {
+            fail("Exceptions should not be thrown!");
+        } catch (InvalidCharForNucSeqException e) {
             fail("Exceptions should not be thrown!");
         }
     }
