@@ -34,7 +34,7 @@ public class NucleotideSequenceTest {
     @Test
     void nucSeqWithMultipleInvalidChar() {
         try {
-            seq3 = new NucleotideSequence("actcgtxacgtadgctagftcgtahggycañtgcta");
+            seq3 = new NucleotideSequence("actcgtxacgtadgctagftcgtahggycatgcta");
             fail("Should throw InvalidCharForNucSeqException");
         } catch (InvalidCharForNucSeqException e) {
             //Correct Path!

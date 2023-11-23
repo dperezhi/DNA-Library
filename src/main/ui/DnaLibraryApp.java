@@ -153,10 +153,14 @@ public class DnaLibraryApp {
         String name = in.nextLine();
         Dna dna = dnaFolder.findDnaByName(name);
         System.out.println(dna.toString());
-        if (dnaFolder.addMoClo(name)) {
-            System.out.println("MoClo flanks added Successful!");
-            System.out.println("New Sequence: " + dna.getNucleotideSequence());
-        } else {
+        try {
+            if (dnaFolder.addMoClo(name)) {
+                System.out.println("MoClo flanks added Successful!");
+                System.out.println("New Sequence: " + dna.getNucleotideSequence());
+            } else {
+                System.out.println("Failure. An Invalid Input was detected!");
+            }
+        } catch (InvalidCharForNucSeqException e) {
             System.out.println("Failure. An Invalid Input was detected!");
         }
     }

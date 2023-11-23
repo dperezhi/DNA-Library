@@ -12,6 +12,7 @@ public class DnaTest {
     private Dna dna2;
     private Dna dna3;
     private Dna dna4;
+    private Dna dna6;
 
     @BeforeEach
     void setUp() {
@@ -23,6 +24,13 @@ public class DnaTest {
         } catch (InvalidCharForNucSeqException e) {
             fail("No exception should be thrown");
         }
+    }
+
+    @Test
+    void testEmptyConstructor() {
+        dna6 = new Dna();
+        assertEquals("new", dna6.getName());
+        assertNull( dna6.getOrganism());
     }
 
     @Test

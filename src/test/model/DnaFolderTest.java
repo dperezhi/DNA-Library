@@ -71,6 +71,12 @@ class DnaFolderTest {
     }
 
     @Test
+    void testSetName() {
+        folder.setName("John");
+        assertEquals("John",folder.getName());
+    }
+
+    @Test
     void testGetDnaNamesMultipleSeq() {
         folder.addDna(dna1);
         assertEquals("test1", folder.getDnaNames());
@@ -154,16 +160,24 @@ class DnaFolderTest {
 
     @Test
     void testAddMoCloEmpty() {
-        assertFalse(folder.addMoClo(dna1.getName()));
-        assertFalse(folder.addMoClo(dna3.getName()));
-        assertFalse(folder.addMoClo(dna2.getName()));
-        assertFalse(folder.addMoClo(dna4.getName()));
+        try {
+            assertFalse(folder.addMoClo(dna1.getName()));
+            assertFalse(folder.addMoClo(dna3.getName()));
+            assertFalse(folder.addMoClo(dna2.getName()));
+            assertFalse(folder.addMoClo(dna4.getName()));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("Should not thrown exception");
+        }
     }
 
     @Test
     void testAddMoClo() {
         folder.addDna(dna1);
-        assertTrue(folder.addMoClo(dna1.getName()));
+        try {
+            assertTrue(folder.addMoClo(dna1.getName()));
+        } catch (InvalidCharForNucSeqException e) {
+            fail("Should not thrown exception");
+        }
         assertEquals("ctcaATGATGATGATGcgcg", dna1.getNucleotideSequence());
     }
 }

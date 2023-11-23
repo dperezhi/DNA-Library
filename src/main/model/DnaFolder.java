@@ -86,16 +86,12 @@ public class DnaFolder implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds MoClo ends to DNA sequence
-    public boolean addMoClo(String name) {
+    public boolean addMoClo(String name) throws InvalidCharForNucSeqException {
         Dna dnaToModify;
         if ((dnaToModify = findDnaByName(name)) == null) {
             return false;
         }
-        try {
-            dnaToModify.setNucleotideSequence("ctca" + dnaToModify.getNucleotideSequence() + "cgcg");
-        } catch (InvalidCharForNucSeqException e) {
-            throw new RuntimeException(e);
-        }
+        dnaToModify.setNucleotideSequence("ctca" + dnaToModify.getNucleotideSequence() + "cgcg");
         return true;
     }
 
