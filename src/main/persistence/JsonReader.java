@@ -31,14 +31,14 @@ public class JsonReader {
     }
 
     // EFFECTS: reads Dna Folder data from file and returns the data; If error occurs throws IOException
-    public DnaFolder read() throws IOException {
+    public DnaFolder read() throws IOException, InvalidCharForNucSeqException {
         String jsonData = readFile(path);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseDnaFolder(jsonObject);
     }
 
     // EFFECTS: parses DnaFolder from JSON object and returns it
-    private DnaFolder parseDnaFolder(JSONObject jsonObject) {
+    private DnaFolder parseDnaFolder(JSONObject jsonObject) throws InvalidCharForNucSeqException {
         String name = jsonObject.getString("name");
         DnaFolder dnaFolder = new DnaFolder(name);
         addDnaSequences(dnaFolder, jsonObject);
@@ -47,7 +47,7 @@ public class JsonReader {
 
     // MODIFIES: dnaFolder
     // EFFECTS: parses Dnas from JSON object and adds them to the DnaFolder
-    private void addDnaSequences(DnaFolder dnaFolder, JSONObject jsonObject) {
+    private void addDnaSequences(DnaFolder dnaFolder, JSONObject jsonObject) throws InvalidCharForNucSeqException {
         JSONArray jsonArray = jsonObject.getJSONArray("DNA Sequences");
         for (Object json : jsonArray) {
             JSONObject nextThingy = (JSONObject) json;
@@ -57,16 +57,13 @@ public class JsonReader {
 
     // MODIFIES: dnaFolder
     // EFFECTS: parses Dna from JSON object and adds it to Dna Folder
-    private void addDna(DnaFolder dnaFolder, JSONObject jsonObject) {
+    private void addDna(DnaFolder dnaFolder, JSONObject jsonObject) throws InvalidCharForNucSeqException {
         String name = jsonObject.getString("name");
         String sequence = jsonObject.getString("sequence");
         String organism = jsonObject.getString("organism");
         Dna dna;
-        try {
-            dna = new Dna(name, sequence, organism);
-        } catch (InvalidCharForNucSeqException e) {
-            throw new RuntimeException(e);
-        }
+
+        dna = new Dna(name, sequence, organism);
         dnaFolder.addDna(dna);
     }
 

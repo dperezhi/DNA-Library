@@ -1,5 +1,6 @@
 package ui.panels.buttonfunctionality.popup.load;
 
+import exceptions.InvalidCharForNucSeqException;
 import model.DnaFolder;
 import persistence.JsonReader;
 import ui.GUI;
@@ -38,6 +39,8 @@ public class LoadPathButton extends JButton implements ActionListener {
             masterFrame.setVisible(false);
         } catch (IOException e) {
             new LoadFrameFileNotFound(masterFrame);
+        } catch (InvalidCharForNucSeqException e) {
+            throw new RuntimeException(e);
         }
         popUpFrame.dispose();
         popUpFrame.setVisible(false);

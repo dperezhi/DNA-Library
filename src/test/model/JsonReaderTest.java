@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.InvalidCharForNucSeqException;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class JsonReaderTest extends JsonTest {
             fail("IOException expected");
         } catch (IOException e) {
             // TEST PASSED!
+        } catch (InvalidCharForNucSeqException e) {
+            fail("Not expected");
         }
     }
 
@@ -36,7 +39,7 @@ public class JsonReaderTest extends JsonTest {
             DnaFolder dnaFolder = reader.read();
             assertEquals("Empty", dnaFolder.getName());
             assertEquals(0, dnaFolder.getDnaFolder().size());
-        } catch (IOException e) {
+        } catch (IOException | InvalidCharForNucSeqException e) {
             fail("File was not found or couldn't read from file");
         }
     }
@@ -51,7 +54,7 @@ public class JsonReaderTest extends JsonTest {
             checkDnaDetails("lib1","atgatgatg","e.coli",dnaSeqs.get(0));
             checkDnaDetails("lib2","catcatcat","b.sub",dnaSeqs.get(1));
             assertEquals(2, dnaSeqs.size());
-        } catch (IOException e) {
+        } catch (IOException | InvalidCharForNucSeqException e) {
             fail("File was not found or couldn't read from file");
         }
     }

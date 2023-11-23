@@ -35,6 +35,8 @@ public class DnaLibraryApp {
         try {
             dnaFolder = jsonReader.read();
             System.out.println("Loaded " + dnaFolder.getName() + " from " + JSON_STORE);
+        } catch (InvalidCharForNucSeqException exception) {
+            throw new RuntimeException();
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
             startNew();
