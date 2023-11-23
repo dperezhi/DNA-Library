@@ -1,7 +1,7 @@
 package ui.panels.buttonfunctionality;
 
 import model.DnaFolder;
-import ui.panels.buttonfunctionality.popup.adddna.AddDnaFrame;
+import ui.panels.buttonfunctionality.popup.adddna.AddDnaFrameAbstract;
 import ui.panels.buttonfunctionality.popup.adddna.AddDnaFrameInitial;
 import ui.panels.sidebar.DnaDisplayed;
 
@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class AddDnaToLibrary extends JButton implements ActionListener {
     private DnaFolder dnaFolder;
-    private AddDnaFrame frame;
+    private AddDnaFrameAbstract frame;
     private DnaDisplayed updateDnaDisplayPanel;
 
     public AddDnaToLibrary(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {

@@ -7,22 +7,22 @@ import ui.panels.sidebar.DnaDisplayed;
 import javax.swing.*;
 import java.awt.*;
 
-public abstract class AddDnaFrame extends JFrame {
+public abstract class AddDnaFrameAbstract extends JFrame {
     private JPanel panel;
     private DnaFolder dnaFolder;
-    private Dna dna;
+    //private Dna dna;
     private JFrame frame;
     private DnaDisplayed updateDnaDisplayPanel;
     private JTextField nameEntry;
     private JTextField organismEntry;
 
-    public AddDnaFrame(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
+    public AddDnaFrameAbstract(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
         super("Add DNA to the library!");
         this.dnaFolder = dnaFolder;
         this.updateDnaDisplayPanel = updateDnaDisplayPanel;
         this.frame = this;
         //this.frame = Objects.requireNonNullElse(frame, this);
-        this.dna = new Dna();
+        //this.dna = new Dna();
 
         panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
@@ -83,9 +83,9 @@ public abstract class AddDnaFrame extends JFrame {
         return frame;
     }
 
-    public Dna getDna() {
-        return dna;
-    }
+    //public Dna getDna() {
+    //    return dna;
+    //}
 
 
 }

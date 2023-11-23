@@ -67,6 +67,7 @@ public class Dna implements Writable {
     //EFFECTS: set the a new value for sequence
     public void setNucleotideSequence(String nucleotideSequence) throws InvalidCharForNucSeqException {
         this.nucleotideSequence = new NucleotideSequence(nucleotideSequence);
+        this.proteinSequence = new ProteinSequence(nucleotideSequence);
     }
 
     //EFFECTS: gets name

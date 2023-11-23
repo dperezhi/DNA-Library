@@ -19,10 +19,10 @@ public class GetDnaInfoFromUser extends JButton implements ActionListener {
     private JFrame newFrame;
     private DnaDisplayed updateDnaDisplayPanel;
 
-    public GetDnaInfoFromUser(Dna dna, JTextField textName, JTextField textOrganism, JTextField textNucleotideSeq,
+    public GetDnaInfoFromUser(JTextField textName, JTextField textOrganism, JTextField textNucleotideSeq,
                               DnaFolder dnaFolder, JFrame frame, DnaDisplayed updateDnaDisplayPanel) {
         super("submit");
-        this.dna = dna;
+        this.dna = new Dna();
         this.textName = textName;
         this.textOrganism = textOrganism;
         this.textNucleotideSeq = textNucleotideSeq;
@@ -30,6 +30,7 @@ public class GetDnaInfoFromUser extends JButton implements ActionListener {
         this.dnaFolder = dnaFolder;
         this.frame = frame;
         this.addActionListener(this);
+        //
     }
 
     @Override

@@ -4,6 +4,7 @@ import exceptions.InvalidCharForNucSeqException;
 import model.Dna;
 import model.DnaFolder;
 import ui.panels.sidebar.SideBar;
+import ui.panels.workspace.MainContent;
 import ui.panels.workspace.WorkSpace;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ public class GUI {
     private JFrame frame;
     private JPanel panel;
     private DnaFolder dnaFolder;
+    private MainContent workSpacePanel;
 
     public GUI() {
         dnaFolder = new DnaFolder();
@@ -34,8 +36,12 @@ public class GUI {
 
         panel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         panel.setLayout(new GridLayout(0,2));
-        panel.add(new SideBar(dnaFolder));
-        panel.add(new WorkSpace(dnaFolder, frame));
+
+        WorkSpace workSpace = new WorkSpace(dnaFolder, frame, this);
+        SideBar sideBar = new SideBar(dnaFolder, workSpacePanel);
+
+        panel.add(sideBar);
+        panel.add(workSpace);
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +59,10 @@ public class GUI {
         } catch (InvalidCharForNucSeqException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setWorkSpacePanel(MainContent workSpacePanel) {
+        this.workSpacePanel = workSpacePanel;
     }
 
 }

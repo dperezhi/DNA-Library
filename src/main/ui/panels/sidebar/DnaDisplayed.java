@@ -1,15 +1,21 @@
 package ui.panels.sidebar;
 
+import model.Dna;
 import model.DnaFolder;
+import ui.Main;
+import ui.panels.buttonfunctionality.DisplayDnaToWorkspaceButton;
+import ui.panels.workspace.MainContent;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class DnaDisplayed extends JPanel {
-    DnaFolder dnaFolder;
+    private DnaFolder dnaFolder;
+    private MainContent displayPanel;
 
-    public DnaDisplayed(DnaFolder dnaFolder) {
+    public DnaDisplayed(DnaFolder dnaFolder, MainContent displayPanel) {
         this.dnaFolder = dnaFolder;
+        this.displayPanel = displayPanel;
         this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         this.setLayout(new GridLayout(0,1));
         this.setBackground(Color.MAGENTA);
@@ -24,7 +30,8 @@ public class DnaDisplayed extends JPanel {
     }
 
     public JButton addDnaToInterface(int index) { //ui.panels.buttonFunctionality.DisplayDnaToWorkspace
-        JButton dnaButton = new JButton();
+        Dna dna = dnaFolder.getDnaFolder().get(index);
+        DisplayDnaToWorkspaceButton dnaButton = new DisplayDnaToWorkspaceButton(dna, displayPanel);
         JPanel dnaEntryPanel = new JPanel();
         dnaButton.add(dnaEntryPanel);
 
@@ -37,7 +44,7 @@ public class DnaDisplayed extends JPanel {
         JLabel labelForImg = new JLabel(dnaLogo);
         dnaEntryPanel.add(labelForImg);
 
-        String name = dnaFolder.getDnaFolder().get(index).getName();
+        String name = dna.getName();
         JLabel labelForName = new JLabel(name);
         dnaEntryPanel.add(labelForName);
 
