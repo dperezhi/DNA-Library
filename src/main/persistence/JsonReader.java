@@ -53,6 +53,8 @@ public class JsonReader {
             JSONObject nextThingy = (JSONObject) json;
             addDna(dnaFolder, nextThingy);
         }
+        EventLog.getInstance().logEvent(
+                new Event("Loaded DNA folder: " + dnaFolder.getName() + " from " + path));
     }
 
     // MODIFIES: dnaFolder

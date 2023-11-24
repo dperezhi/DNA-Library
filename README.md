@@ -30,8 +30,11 @@ to a file and have the option to do so or not.
 
 ### Instructions for Grader
 a list of step-by-step instructions for interacting with your GUI that describes:
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by...
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the + 
+sign button on the rop right of the left side panel to add DNAs to your library.
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the DNA
+you will be able to see the specific details of that dna on the workspace on the right side panel.
+- You can locate my visual component when you click the save botton you will see a cheetah picture. Moreover, the DNA 
+buttons have a DNA image on the left. 
+- You can save the state of my application by clicking the save icon.
+- You can reload the state of my application by clicking the load icon with the "correct" file name.

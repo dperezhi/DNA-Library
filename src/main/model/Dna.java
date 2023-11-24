@@ -16,6 +16,7 @@ public class Dna implements Writable {
      */
     public Dna() {
         this.name = "new";
+        EventLog.getInstance().logEvent(new Event("Created New DNA:  " + this.name));
     }
 
     /*
@@ -29,6 +30,7 @@ public class Dna implements Writable {
         this.name = name;
         this.organism = organism;
         proteinSequence = new ProteinSequence(nucleotideSequence);
+        EventLog.getInstance().logEvent(new Event("Created New DNA:  " + this.name));
     }
 
     //EFFECTS: returns a string with all the field values of the DNA object
@@ -68,6 +70,7 @@ public class Dna implements Writable {
     public void setNucleotideSequence(String nucleotideSequence) throws InvalidCharForNucSeqException {
         this.nucleotideSequence = new NucleotideSequence(nucleotideSequence);
         this.proteinSequence = new ProteinSequence(nucleotideSequence);
+        EventLog.getInstance().logEvent(new Event("Modified Nucleotide Sequence of " + this.name));
     }
 
     //EFFECTS: gets name
@@ -78,6 +81,7 @@ public class Dna implements Writable {
     //MODIFIES: this
     //EFFECTS: set the a new value for name
     public void setName(String name) {
+        EventLog.getInstance().logEvent(new Event("Modified Name of DNA from" + this.name + " to " + name));
         this.name = name;
     }
 
@@ -90,6 +94,7 @@ public class Dna implements Writable {
     //EFFECTS: set the a new value for organism
     public void setOrganism(String organism) {
         this.organism = organism;
+        EventLog.getInstance().logEvent(new Event("Modified Organism of " + this.name));
     }
 
     //EFFECTS: gets protein sequence

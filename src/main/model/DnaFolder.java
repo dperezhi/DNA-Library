@@ -15,12 +15,14 @@ public class DnaFolder implements Writable {
     // EFFECTS: creates DNA folder with default name
     public DnaFolder() {
         dnaFolder = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Created new DNA folder: " + this.name));
     }
 
     // EFFECTS: creates DNA folder with a given name
     public DnaFolder(String name) {
         this();
         this.name = name;
+        EventLog.getInstance().logEvent(new Event("Created new DNA folder: " + this.name));
     }
 
     // MODIFIES: this
@@ -28,8 +30,10 @@ public class DnaFolder implements Writable {
     public boolean addDna(Dna dna) {
         if (!dnaFolder.contains(dna)) {
             dnaFolder.add(dna);
+            EventLog.getInstance().logEvent(new Event("Added DNA: " + dna.getName() + " to folder"));
             return true;
         }
+        EventLog.getInstance().logEvent(new Event("Failed to add DNA: " + dna.getName() + " to folder"));
         return false;
     }
 
@@ -89,9 +93,11 @@ public class DnaFolder implements Writable {
     public boolean addMoClo(String name) throws InvalidCharForNucSeqException {
         Dna dnaToModify;
         if ((dnaToModify = findDnaByName(name)) == null) {
+            EventLog.getInstance().logEvent(new Event("Failed to add MoClo flanks to DNA: " + name));
             return false;
         }
         dnaToModify.setNucleotideSequence("ctca" + dnaToModify.getNucleotideSequence() + "cgcg");
+        EventLog.getInstance().logEvent(new Event("Added MoClo flanks to DNA: " + name));
         return true;
     }
 
@@ -116,7 +122,6 @@ public class DnaFolder implements Writable {
         for (Dna dna : dnaFolder) {
             jsonArray.put(dna.toJson());
         }
-
         return jsonArray;
     }
 
@@ -125,7 +130,11 @@ public class DnaFolder implements Writable {
         return name;
     }
 
+    //MODIFIES: this
+    //EFFECTS: changes name of Dna Folder
     public void setName(String name) {
+        EventLog.getInstance().logEvent(
+                new Event("Changed DNA folder name from " + this.name + " to " + name));
         this.name = name;
     }
 }

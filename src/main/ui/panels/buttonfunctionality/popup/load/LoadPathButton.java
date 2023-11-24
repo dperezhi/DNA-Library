@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+// represents a button in which the user loads a DnaFolder from within a json file
 public class LoadPathButton extends JButton implements ActionListener {
     private JTextField textField;
     private String name;
@@ -20,6 +21,9 @@ public class LoadPathButton extends JButton implements ActionListener {
     private DnaFolder dnaFolder;
     private JPanel panel;
 
+    //MODIFIES: this
+    //EFFECTS: sets up a LoadPathButton, whose action is determined by actionPerformed method w/in
+    //         this method.
     public LoadPathButton(JTextField textField, JFrame popUpFrame, JFrame masterFrame, JPanel panel) {
         super("submit");
         this.panel = panel;
@@ -29,7 +33,10 @@ public class LoadPathButton extends JButton implements ActionListener {
         this.addActionListener(this);
     }
 
-    // Resiliency
+    //EFFECTS: loads a Dna Folder from a json file. If filename input not found it creates a new pop-up frame
+    //         LoadFrameFileNotFound. It should never encounter InvalidCharForNucSeqException as that is checked when
+    //         file is initially saved. If no exception is found it will dispose of the pop-up frame and load a new GUI
+    //         with the loaded Dna Folder.
     private void loadDnaFolder() {
         try {
             dnaFolder = jsonReader.read();
@@ -46,6 +53,8 @@ public class LoadPathButton extends JButton implements ActionListener {
         popUpFrame.setVisible(false);
     }
 
+    //MODIFIES: this
+    //EFFECTS: gets the name of the loaded file from the user and creates a new GUI with the loaded DnaFolder.
     @Override
     public void actionPerformed(ActionEvent e) {
         name = textField.getText();

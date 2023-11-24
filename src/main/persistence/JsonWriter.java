@@ -1,6 +1,8 @@
 package persistence;
 
 import model.DnaFolder;
+import model.Event;
+import model.EventLog;
 import org.json.JSONObject;
 import java.io.*;
 
@@ -35,6 +37,8 @@ public class JsonWriter {
     public void write(DnaFolder dnaFolder) {
         JSONObject json = dnaFolder.toJson();
         saveToFile(json.toString(INDENT_FACTOR));
+        EventLog.getInstance().logEvent(
+                new Event("Saved DNA folder: " + dnaFolder.getName() + " to " + path));
     }
 
     // MODIFIES: this

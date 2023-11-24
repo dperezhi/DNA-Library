@@ -9,8 +9,6 @@ import ui.panels.workspace.WorkSpace;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 //Creates a Graphical User Interface for the DNA Library
 public class GUI {
@@ -19,17 +17,22 @@ public class GUI {
     private DnaFolder dnaFolder;
     private MainContent workSpacePanel;
 
+    //MODIFIES: this
+    //EFFECTS: creates a new GRAPHICAL user interface of the Dna Library app when a DnaFolder is NOT provided
     public GUI() {
         dnaFolder = new DnaFolder();
         testAddDna();
         frameSetUp();
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates a new GRAPHICAL user interface of the Dna Library app when a DnaFolder is provided
     public GUI(DnaFolder dnaFolder) {
         this.dnaFolder = dnaFolder;
         frameSetUp();
     }
 
+    //EFFECTS: creates the new main frame and panel for the DNA library
     public void frameSetUp() {
         frame = new JFrame("DNA library");
         panel = new JPanel();
@@ -44,12 +47,16 @@ public class GUI {
         panel.add(workSpace);
 
         frame.add(panel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        frame.addWindowListener(new WindowAdapter(frame));
         frame.pack();
         frame.setSize(1200, 750);            //sets frame size
         frame.setVisible(true);                          //to see the frame
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds DNAs to a test DnaFolder
     public void testAddDna() {
         try {
             dnaFolder.addDna(new Dna("test1", "ATGATGATGATG", "B.Subtilis"));
@@ -61,6 +68,8 @@ public class GUI {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets up the workspace panel for future modifications
     public void setWorkSpacePanel(MainContent workSpacePanel) {
         this.workSpacePanel = workSpacePanel;
     }

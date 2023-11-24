@@ -3,11 +3,14 @@ package ui.panels.buttonfunctionality.popup.load;
 import javax.swing.*;
 import java.awt.*;
 
+//represents a pop-ip frame in which the input file to load was not found. The user will be asked to try again.
 public class LoadFrameFileNotFound extends JFrame {
     private JFrame masterFrame;
     private JPanel loadPanel;
     private JFrame loadFrame;
 
+    //MODIFIES: this
+    //EFFECTS: sets up a LoadFrameFileNotFound to try to input a valid name of a file to load.
     public LoadFrameFileNotFound(JFrame masterFrame) {
         this.masterFrame = masterFrame;
         loadFrame = new JFrame("Load Library");

@@ -1,0 +1,30 @@
+{
+    "DNA Sequences": [
+        {
+            "sequence": "ATGATGATGATG",
+            "organism": "B.Subtilis",
+            "name": "test1"
+        },
+        {
+            "sequence": "TTT",
+            "organism": "B.Subtilis",
+            "name": "test2"
+        },
+        {
+            "sequence": "ATTAGTAT",
+            "organism": "E.coli",
+            "name": "test3"
+        },
+        {
+            "sequence": "GCGAGAGTAA",
+            "organism": "E.coli",
+            "name": "test4"
+        },
+        {
+            "sequence": "actgatcgatctanctagtctagnc",
+            "organism": "   Enter the text...",
+            "name": "John F kennedy"
+        }
+    ],
+    "name": "john"
+}
