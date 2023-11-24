@@ -9,10 +9,13 @@ import ui.panels.workspace.MainContent;
 import javax.swing.*;
 import java.awt.*;
 
+// represents a panel within the SideBar panel in which all the name's of the DNAs within the DNA folder can be seen
 public class DnaDisplayed extends JPanel {
     private DnaFolder dnaFolder;
     private MainContent displayPanel;
 
+    //MODIFIES: this
+    //EFFECTS: creates the panel in which all DNAs within the dnaFolder can be observed
     public DnaDisplayed(DnaFolder dnaFolder, MainContent displayPanel) {
         this.dnaFolder = dnaFolder;
         this.displayPanel = displayPanel;
@@ -25,11 +28,14 @@ public class DnaDisplayed extends JPanel {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds a new DNA panel/button within the DNADisplay panel
     public void addExtraDnaToInterface() {
         this.add(addDnaToInterface(dnaFolder.getDnaFolder().size() - 1));
     }
 
-    public JButton addDnaToInterface(int index) { //ui.panels.buttonFunctionality.DisplayDnaToWorkspace
+    //EFFECTS: creates a new DNA button/panel within the DnaDisplayed Panel, represented by the DNA name
+    public JButton addDnaToInterface(int index) {
         Dna dna = dnaFolder.getDnaFolder().get(index);
         DisplayDnaToWorkspaceButton dnaButton = new DisplayDnaToWorkspaceButton(dna, displayPanel);
         JPanel dnaEntryPanel = new JPanel();
@@ -50,15 +56,12 @@ public class DnaDisplayed extends JPanel {
 
         JMenuBar menuBar2 = new JMenuBar();
         JMenu menu = new JMenu("...");
-        //ui.panels.buttonFunctionality.ModifyDna
         JMenuItem menuItem1 = new JMenuItem("Modify DNA");
-        //ui.panels.buttonFunctionality.AddsMoCloFlanks
         JMenuItem menuItem2 = new JMenuItem("Add MoClo flanks... to be implemented");
         menu.add(menuItem1);
         menu.add(menuItem2);
         menuBar2.add(menu);
         dnaEntryPanel.add(menuBar2);
-
         return dnaButton;
     }
 

@@ -7,9 +7,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// represents Button that allows one to load a dnaFolder within a json file
 public class Load extends JButton implements ActionListener {
     private JFrame masterFrame;
 
+    //MODIFIES: this
+    //EFFECTS: sets up a load button within the File menu, whose action is determined by actionPerformed method w/in
+    //         this method.
     public Load(JFrame masterFrame) {
         this.masterFrame = masterFrame;
         ImageIcon addIcon = new ImageIcon("./src/main/img/load-icon.png");
@@ -18,6 +22,8 @@ public class Load extends JButton implements ActionListener {
         this.addActionListener(this);
     }
 
+    //EFFECTS: sets up a new pop-up frame and panel in which one can load a DnaLibrary once the button is clicked,
+    //         given the name of a file.
     @Override
     public void actionPerformed(ActionEvent e) {
         JFrame loadFrame = new JFrame("Load Library");

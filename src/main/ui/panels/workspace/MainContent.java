@@ -7,29 +7,16 @@ import ui.GUI;
 import javax.swing.*;
 import java.awt.*;
 
+//represents a panel where the main content of the dna library can be seen
 public class MainContent extends JPanel {
     private DnaFolder dnaFolder;
     private Dna dna;
     private GUI masterGui;
     private JLabel emptyLabel;
 
-    /*public MainContent(DnaFolder dnaFolder, GUI masterGui) {
-        //displayDnaInfo = new JPanel();
-        this.dnaFolder = dnaFolder;
-        this.masterGui = masterGui;
-        this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
-        this.setLayout(new GridLayout(0,1));
-        this.setBackground(Color.orange);
 
-        // needs to be interactive
-        //this.add(displayNucleotides(1));
-        //this.add(displayPepetides(1));
-        //this.add(displayLength(1));
-
-        // p1.add(p1,BorderLayout.CENTER);
-        masterGui.setWorkSpacePanel(this);
-    }*/
-
+    //MODIFIES: this
+    //EFFECTS: create the main content panel within in the workspace
     public MainContent(GUI masterGui) {
         this.masterGui = masterGui;
         this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
@@ -41,21 +28,20 @@ public class MainContent extends JPanel {
         masterGui.setWorkSpacePanel(this);
     }
 
+    //MODIFIES: this
+    //EFFECTS: updates the main content of the DNA display system when the DNA button is pressed
     public void update(Dna dna) {
         this.dna = dna;
         this.removeAll();
         this.revalidate();
         this.repaint();
-        //this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
-        //this.setLayout(new GridLayout(0,1));
-        //this.setBackground(Color.orange);
 
         this.add(displayNucleotides(dna));
-        this.add(displayPepetides(dna));
+        this.add(displayPeptides(dna));
         this.add(displayLength(dna));
     }
 
-    // remove INDEX parameter and change dnaFolder.getDnaFolder().get(index) for dna
+    //EFFECTS: sets up a panel within the main content panel in which the nucleotide seq of the DNA can be observed
     public JPanel displayNucleotides(Dna dna) {
         JPanel displayNucSeq = new JPanel();
         displayNucSeq.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
@@ -71,7 +57,8 @@ public class MainContent extends JPanel {
         return displayNucSeq;
     }
 
-    public JPanel displayPepetides(Dna dna) {
+    //EFFECTS: sets up a panel within the main content panel in which the peptide seq of the DNA can be observed
+    public JPanel displayPeptides(Dna dna) {
         JPanel displayProteinSeq = new JPanel();
         displayProteinSeq.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         displayProteinSeq.setLayout(new GridLayout(0,1));
@@ -86,6 +73,7 @@ public class MainContent extends JPanel {
         return displayProteinSeq;
     }
 
+    //EFFECTS: sets up a panel within the main content panel in which the length of the DNA seq can be observed
     public JPanel displayLength(Dna dna) {
         JPanel p11 = new JPanel();
         p11.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
@@ -97,5 +85,4 @@ public class MainContent extends JPanel {
         p11.add(labelBpLength);
         return p11;
     }
-
 }

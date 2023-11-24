@@ -9,11 +9,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//represents a button within the Header that allows the user to add DNA to the DNA name displayer
 public class AddDnaToLibrary extends JButton implements ActionListener {
     private DnaFolder dnaFolder;
     private AddDnaFrameAbstract frame;
     private DnaDisplayed updateDnaDisplayPanel;
 
+    //MODIFIES: this
+    //EFFECTS: sets up a AddDnaToLibrary, whose action is determined by actionPerformed method w/in
+    //         this method.
     public AddDnaToLibrary(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
         this.dnaFolder = dnaFolder;
         this.updateDnaDisplayPanel = updateDnaDisplayPanel;
@@ -23,6 +27,8 @@ public class AddDnaToLibrary extends JButton implements ActionListener {
         this.addActionListener(this);
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates a new pop-up Frame and Panel where one can add a new DNA
     @Override
     public void actionPerformed(ActionEvent e) {
         frame = new AddDnaFrameInitial(dnaFolder, updateDnaDisplayPanel);

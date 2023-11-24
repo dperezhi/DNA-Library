@@ -7,15 +7,16 @@ import ui.Main;
 import javax.swing.*;
 import java.awt.*;
 
+// represents a panel within the GUI frame in which the main content of the DNAs can be observed and also the file menu
 public class WorkSpace extends JPanel {
     private DnaFolder dnaFolder;
     private JFrame masterFrame;
     private MainContent displayWorkspace;
     private GUI masterGui;
 
-
+    //MODIFIES: this
+    //EFFECTS: creates the workspace panel
     public WorkSpace(DnaFolder dnaFolder, JFrame masterFrame, GUI masterGui) {
-        //JPanel p2 = new JPanel();
         this.dnaFolder = dnaFolder;
         this.masterGui = masterGui;
         this.masterFrame = masterFrame;

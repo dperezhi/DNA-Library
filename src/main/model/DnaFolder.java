@@ -125,6 +125,8 @@ public class DnaFolder implements Writable {
         return name;
     }
 
+    //MODIFIES: this
+    //EFFECTS: changes name of Dna Folder
     public void setName(String name) {
         this.name = name;
     }

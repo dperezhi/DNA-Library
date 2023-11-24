@@ -1,18 +1,20 @@
 package ui.panels.buttonfunctionality;
 
 import model.DnaFolder;
-import persistence.JsonWriter;
 import ui.panels.buttonfunctionality.popup.save.SavePathButton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
+// represents Button that allows one to save a dnaFolder within a json file
 public class Save extends JButton implements ActionListener {
     private DnaFolder dnaFolder;
 
+    //MODIFIES: this
+    //EFFECTS: sets up a save button within the File menu, whose action is determined by actionPerformed method w/in
+    //         this method.
     public Save(DnaFolder dnaFolder) {
         this.dnaFolder = dnaFolder;
         ImageIcon addIcon = new ImageIcon("./src/main/img/save-icon.png");
@@ -21,7 +23,7 @@ public class Save extends JButton implements ActionListener {
         this.addActionListener(this);
     }
 
-
+    //EFFECTS: sets up a new pop-up frame and panel in which one can save a DnaLibrary once the button is clicked.
     @Override
     public void actionPerformed(ActionEvent e) {
         JFrame saveFrame = new JFrame("Save Library");

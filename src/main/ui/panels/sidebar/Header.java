@@ -6,10 +6,13 @@ import ui.panels.buttonfunctionality.AddDnaToLibrary;
 import javax.swing.*;
 import java.awt.*;
 
+// represent a Panel which serves as the header within the sidebar panel
 public class Header extends JPanel {
     private DnaFolder dnaFolder;
     private DnaDisplayed updateDnaDisplayPanel;
 
+    //MODIFIES: this
+    //EFFECTS: creates a new Header with an option to add new DNAs to the Dna Library
     public Header(DnaFolder dnaFolder, DnaDisplayed updateDnaDisplayPanel) {
         this.dnaFolder = dnaFolder;
         this.updateDnaDisplayPanel = updateDnaDisplayPanel;
@@ -21,6 +24,7 @@ public class Header extends JPanel {
         this.add(bottomPanel());
     }
 
+    //EFFECTS: sets up a new panel within the Header in which the Icon, title, and add Dna button are displayed
     public JPanel topPanel() {
         JPanel topPanel = new JPanel();
         topPanel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
@@ -35,13 +39,13 @@ public class Header extends JPanel {
         JLabel l1 = new JLabel("My Library");
         topPanel.add(l1);
 
-        //ui.panels.buttonFunctionality.AddDnaToLibrary
         AddDnaToLibrary addDnaButton = new AddDnaToLibrary(dnaFolder, updateDnaDisplayPanel);
         topPanel.add(addDnaButton);
 
         return topPanel;
     }
 
+    //EFFECTS: sets up a new panel within the Header in which the search bar is displayed
     public JPanel bottomPanel() {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
