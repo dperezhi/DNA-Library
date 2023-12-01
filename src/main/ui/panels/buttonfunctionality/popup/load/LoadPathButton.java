@@ -19,14 +19,12 @@ public class LoadPathButton extends JButton implements ActionListener {
     private JFrame popUpFrame;
     private JFrame masterFrame;
     private DnaFolder dnaFolder;
-    private JPanel panel;
 
     //MODIFIES: this
     //EFFECTS: sets up a LoadPathButton, whose action is determined by actionPerformed method w/in
     //         this method.
-    public LoadPathButton(JTextField textField, JFrame popUpFrame, JFrame masterFrame, JPanel panel) {
+    public LoadPathButton(JTextField textField, JFrame popUpFrame, JFrame masterFrame) {
         super("submit");
-        this.panel = panel;
         this.textField = textField;
         this.popUpFrame = popUpFrame;
         this.masterFrame = masterFrame;

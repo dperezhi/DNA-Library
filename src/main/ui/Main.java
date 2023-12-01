@@ -10,7 +10,7 @@ public class Main {
         new GUI();
 
         try {
-            new DnaLibraryApp();
+            new DnaLibraryConsoleApp();
         } catch (FileNotFoundException e) {
             System.out.println("Error. File not found!");
         }

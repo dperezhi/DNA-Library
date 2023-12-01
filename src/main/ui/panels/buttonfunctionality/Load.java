@@ -35,7 +35,7 @@ public class Load extends JButton implements ActionListener {
         JTextField path = new JTextField("Enter the name of the loaded file");
         loadPanel.add(path);
 
-        LoadPathButton loadPathButton = new LoadPathButton(path, loadFrame, masterFrame, loadPanel);
+        LoadPathButton loadPathButton = new LoadPathButton(path, loadFrame, masterFrame);
         loadPanel.add(loadPathButton);
 
         ImageIcon loadImage = new ImageIcon("./src/main/img/happy-cheetah.jpg");

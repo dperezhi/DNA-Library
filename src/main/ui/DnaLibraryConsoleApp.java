@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 //represents a DNA library App
-public class DnaLibraryApp {
+public class DnaLibraryConsoleApp {
     private static final String JSON_STORE = "./data/dnaLibrary.json";
     private static Scanner in;
     private static DnaFolder dnaFolder;
@@ -19,7 +19,7 @@ public class DnaLibraryApp {
 
     // MODIFIES: this
     // EFFECTS: creates a new DnaLibraryApp
-    public DnaLibraryApp() throws FileNotFoundException {
+    public DnaLibraryConsoleApp() throws FileNotFoundException {
         in = new Scanner(System.in);
         dnaFolder = new DnaFolder();
         jsonWriter = new JsonWriter(JSON_STORE);

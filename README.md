@@ -38,3 +38,44 @@ you will be able to see the specific details of that dna on the workspace on the
 buttons have a DNA image on the left. 
 - You can save the state of my application by clicking the save icon.
 - You can reload the state of my application by clicking the load icon with the "correct" file name.
+
+
+#### Phase 4: Task 2
+Thu Nov 30 17:23:56 PST 2023
+Created new DNA folder: default
+
+Thu Nov 30 17:23:56 PST 2023
+Created New DNA:  test1
+
+Thu Nov 30 17:23:56 PST 2023
+Added DNA: test1 to folder
+
+Thu Nov 30 17:23:56 PST 2023
+Created New DNA:  test2
+
+Thu Nov 30 17:23:56 PST 2023
+Added DNA: test2 to folder
+
+Thu Nov 30 17:23:56 PST 2023
+Created New DNA:  test3
+
+Thu Nov 30 17:23:56 PST 2023
+Added DNA: test3 to folder
+
+Thu Nov 30 17:23:56 PST 2023
+Created New DNA:  test4
+
+Thu Nov 30 17:23:56 PST 2023
+Added DNA: test4 to folder
+
+Thu Nov 30 17:24:04 PST 2023
+Created New DNA:  Diego
+
+Thu Nov 30 17:24:04 PST 2023
+Added DNA: Diego to folder
+
+Thu Nov 30 17:24:04 PST 2023
+Loaded DNA folder: default from ./data/dnaLibrary.json
+
+#### Phase 4: Task 3
+

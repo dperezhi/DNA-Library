@@ -5,14 +5,12 @@ import java.awt.*;
 
 //represents a pop-ip frame in which the input file to load was not found. The user will be asked to try again.
 public class LoadFrameFileNotFound extends JFrame {
-    private JFrame masterFrame;
     private JPanel loadPanel;
     private JFrame loadFrame;
 
     //MODIFIES: this
     //EFFECTS: sets up a LoadFrameFileNotFound to try to input a valid name of a file to load.
     public LoadFrameFileNotFound(JFrame masterFrame) {
-        this.masterFrame = masterFrame;
         loadFrame = new JFrame("Load Library");
         loadPanel = new JPanel();
         loadPanel.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
@@ -22,7 +20,7 @@ public class LoadFrameFileNotFound extends JFrame {
         JTextField path = new JTextField("Enter the name of the file");
         loadPanel.add(path);
 
-        LoadPathButton loadPathButton = new LoadPathButton(path, loadFrame, masterFrame, loadPanel);
+        LoadPathButton loadPathButton = new LoadPathButton(path, loadFrame, masterFrame);
         loadPanel.add(loadPathButton);
 
         loadPanel.add(new Label(("File Not Found. Try Again!")));
