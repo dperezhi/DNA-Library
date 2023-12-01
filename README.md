@@ -28,7 +28,7 @@ to a file and have the option to do so or not.
 #### Phase 3
 - As a user, I want the software to check that all the characters in my DNA sequence are valid
 
-### Instructions for Grader
+##### Instructions for Grader
 a list of step-by-step instructions for interacting with your GUI that describes:
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the + 
 sign button on the rop right of the left side panel to add DNAs to your library.
@@ -78,4 +78,8 @@ Thu Nov 30 17:24:04 PST 2023
 Loaded DNA folder: default from ./data/dnaLibrary.json
 
 #### Phase 4: Task 3
-
+With more time I would reduce the amount of classes while also reducing redundant code in my program. Moreover, I would 
+add helping classes (refactoring) to improve the readability of the program as well as the structure. I also want to add
+other functions to the program and as such i need to refactor to make adding those easier. The main refactoring change I
+would do it the implementation of classes set up just from the JFrame and JPanel setup, as well as remove redundant code 
+currently found in all classes that does the same thing.
